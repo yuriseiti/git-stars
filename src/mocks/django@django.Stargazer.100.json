@@ -1,0 +1,2540 @@
+[
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T17:04:28.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjEyMTAyNjQw",
+      "__typename": "User",
+      "login": "charlesfranciscodev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12102640?u=9846c91150e82225b23e2e03d1a012bc9782ba9f&v=4",
+      "bio": "Software Engineering | ML Infrastructure",
+      "company": "Capgemini",
+      "created_at": {
+        "$date": "2015-04-24T17:03:48.000Z"
+      },
+      "database_id": 12102640,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Canada 🇨🇦",
+      "name": "Charles-A. Francisco",
+      "pronouns": "",
+      "social_accounts": {
+        "generic": "https://ca.linkedin.com/in/charlesfranciscodev/en"
+      },
+      "updated_at": {
+        "$date": "2024-09-03T17:51:28.000Z"
+      },
+      "website_url": "https://charlesfranciscodev.github.io/",
+      "followers_count": 142,
+      "following_count": 196,
+      "gists_count": 3,
+      "issues_count": 7,
+      "organizations_count": 0,
+      "pull_requests_count": 6,
+      "repositories_count": 12,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 1,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 100,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T17:03:31.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjU3Njg2NjAw",
+      "__typename": "User",
+      "login": "Endless077",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57686600?u=53cbb25cb580e31e1462a4020d5a981b86eeea95&v=4",
+      "bio": "Our democracy has been hacked.",
+      "company": "Università degli Studi di Salerno",
+      "created_at": {
+        "$date": "2019-11-12T20:44:27.000Z"
+      },
+      "database_id": 57686600,
+      "email": "antonio.garofalo125@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Naples",
+      "name": "Antonio Garofalo",
+      "pronouns": "he/him",
+      "updated_at": {
+        "$date": "2024-09-04T21:42:15.000Z"
+      },
+      "website_url": "https://github.com/Endless077",
+      "followers_count": 14,
+      "following_count": 78,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 11,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 189,
+      "watching_count": 11
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T16:08:12.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBX_nLQ",
+      "__typename": "User",
+      "login": "black-devil-369",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92268333?u=8d2051c696265c490c70c062f1ec089724bf580b&v=4",
+      "bio": "B.tech | @AKTU | Web Developer👉▄︻̷̿┻̿═━一👉Competitive Coder",
+      "created_at": {
+        "$date": "2021-10-10T17:13:27.000Z"
+      },
+      "database_id": 92268333,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "name": "Ajay Chauhan",
+      "pronouns": "",
+      "social_accounts": {
+        "twitter": "@black_devil_369"
+      },
+      "twitter_username": "black_devil_369",
+      "updated_at": {
+        "$date": "2024-08-28T13:11:46.000Z"
+      },
+      "website_url": "https://www.linkedin.com/in/ajay-chauhan-a3b002205?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BK2%2B58jghSNWLevz9QKt5PA%3D%3D",
+      "followers_count": 4,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 20,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 77,
+      "watching_count": 14
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T15:15:31.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjg1NDc3MzIz",
+      "__typename": "User",
+      "login": "tanmayvaij",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85477323?u=815379d32a0b62433f978484e92e34956ceae55c&v=4",
+      "bio": "Cross Platform App( React Native ) Developer at Oiconomos | Ex R & D Full Stack Developer of SystemOnSilicon",
+      "company": "Oiconomos, Bhubaneshwar, India",
+      "created_at": {
+        "$date": "2021-06-07T06:23:35.000Z"
+      },
+      "database_id": 85477323,
+      "email": "tanmayvaij22@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": true,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Pune",
+      "name": "Tanmay Vaij",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "instagram": "tanmayvaij",
+        "linkedin": "in/tanmayvaij"
+      },
+      "updated_at": {
+        "$date": "2024-09-04T12:11:56.000Z"
+      },
+      "website_url": "https://tanmayvaij.netlify.app",
+      "followers_count": 19,
+      "following_count": 14,
+      "gists_count": 1,
+      "issues_count": 8,
+      "organizations_count": 0,
+      "pull_requests_count": 4,
+      "repositories_count": 83,
+      "repositories_contributed_to_count": 7,
+      "repository_discussions_count": 2,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 37,
+      "watching_count": 80
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T15:03:59.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjYzNzMxNDY0",
+      "__typename": "User",
+      "login": "diegovfeder",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63731464?u=36d54c06cc432a447cc990c896b6dda77bbb97c0&v=4",
+      "bio": "<dev />",
+      "company": "Tarmac.io",
+      "created_at": {
+        "$date": "2020-04-15T14:33:46.000Z"
+      },
+      "database_id": 63731464,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Brazil",
+      "name": "Diego Feder",
+      "pronouns": "",
+      "social_accounts": {
+        "instagram": "diegovfeder",
+        "generic": "https://www.linkedin.com/in/diego-feder-287b418b/en"
+      },
+      "updated_at": {
+        "$date": "2024-08-29T12:57:10.000Z"
+      },
+      "followers_count": 35,
+      "following_count": 91,
+      "gists_count": 2,
+      "issues_count": 4,
+      "organizations_count": 0,
+      "pull_requests_count": 62,
+      "repositories_count": 30,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 468,
+      "watching_count": 31
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T14:31:57.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjIyMzQ5NDIw",
+      "__typename": "User",
+      "login": "vikram-ray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22349420?u=25b947fa1905f9aa3944f5c1b42df0d8c0dbf453&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2016-09-21T15:13:53.000Z"
+      },
+      "database_id": 22349420,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Bangalore",
+      "updated_at": {
+        "$date": "2024-09-03T07:04:33.000Z"
+      },
+      "followers_count": 6,
+      "following_count": 5,
+      "gists_count": 4,
+      "issues_count": 12,
+      "organizations_count": 0,
+      "pull_requests_count": 3,
+      "repositories_count": 34,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 35,
+      "watching_count": 26
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T12:43:56.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjQ1MzEyNTU4",
+      "__typename": "User",
+      "login": "MasonEast",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45312558?u=1ea41909208e4d822d935f1d7168efbe848beed2&v=4",
+      "bio": "",
+      "company": ".",
+      "created_at": {
+        "$date": "2018-11-24T13:29:33.000Z"
+      },
+      "database_id": 45312558,
+      "email": "masoneastc@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "成都",
+      "name": "东方石匠",
+      "updated_at": {
+        "$date": "2024-08-28T02:41:33.000Z"
+      },
+      "website_url": "masoneast.github.io",
+      "followers_count": 24,
+      "following_count": 23,
+      "gists_count": 0,
+      "issues_count": 4,
+      "organizations_count": 0,
+      "pull_requests_count": 1,
+      "repositories_count": 39,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 202,
+      "watching_count": 25
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T12:39:39.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBoGfpg",
+      "__typename": "User",
+      "login": "Aman0823",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109158310?u=5269fc000990d59c03f1456b274bc3b5968b86c5&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2022-07-12T14:17:42.000Z"
+      },
+      "database_id": 109158310,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-26T16:31:30.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 1,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 2,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 5,
+      "watching_count": 2
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T12:02:03.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjE3NTEzMzcw",
+      "__typename": "User",
+      "login": "yarimiz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17513370?v=4",
+      "bio": "Entrepreneur. Software geek. Gamer.",
+      "company": "Centric Technologies",
+      "created_at": {
+        "$date": "2016-02-27T12:20:12.000Z"
+      },
+      "database_id": 17513370,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Or Yarimi",
+      "pronouns": "he/him",
+      "updated_at": {
+        "$date": "2024-08-20T09:07:07.000Z"
+      },
+      "followers_count": 2,
+      "following_count": 1,
+      "gists_count": 1,
+      "issues_count": 17,
+      "organizations_count": 0,
+      "pull_requests_count": 12,
+      "repositories_count": 7,
+      "repositories_contributed_to_count": 5,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 38,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T10:47:29.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjgyMTM3NzE2",
+      "__typename": "User",
+      "login": "GabrielDja",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82137716?u=823d8ed48d3c1dbd0df0db2d2cf93362bbcac555&v=4",
+      "bio": "Resource Pack Minecraft, UI/UX Designer, Video Edit and 3D Animator!",
+      "company": "DJAMinimation Studio",
+      "created_at": {
+        "$date": "2021-04-08T06:13:27.000Z"
+      },
+      "database_id": 82137716,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "France",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-08-10T21:49:00.000Z"
+      },
+      "website_url": "https://gabrieldjalayer.wixsite.com/gabrieldja-gaming-yt",
+      "followers_count": 2,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 3,
+      "organizations_count": 0,
+      "pull_requests_count": 2,
+      "repositories_count": 8,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 216,
+      "watching_count": 8
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T09:37:36.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCpR4Ug",
+      "__typename": "User",
+      "login": "Chromium3Hydroxide",
+      "avatar_url": "https://avatars.githubusercontent.com/u/177502290?v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2024-08-05T04:29:28.000Z"
+      },
+      "database_id": 177502290,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-09-05T09:02:19.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 1,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T08:19:10.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBqGF1g",
+      "__typename": "User",
+      "login": "ozbekb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111248854?u=c4ef51f0d19900372dde08ce135ab8abed9395ef&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2022-08-14T20:04:41.000Z"
+      },
+      "database_id": 111248854,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Bengü Özbek",
+      "updated_at": {
+        "$date": "2024-08-28T08:03:21.000Z"
+      },
+      "followers_count": 10,
+      "following_count": 6,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 3,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 14,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T07:52:42.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBr2mbQ",
+      "__typename": "User",
+      "login": "PouyaBaniadam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/113092205?u=2f0fbe382203bf0cf8303f7dcd91bd2b41c00c05&v=4",
+      "bio": "Love to be a programmer and who knows ...\r\nMaybe one day , I'd change the world ✌️",
+      "created_at": {
+        "$date": "2022-09-08T07:19:25.000Z"
+      },
+      "database_id": 113092205,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Cloud !",
+      "name": "PouyaLj",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "generic": "https://t.me/PouyaLj2000"
+      },
+      "updated_at": {
+        "$date": "2024-08-31T05:39:54.000Z"
+      },
+      "followers_count": 66,
+      "following_count": 85,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 23,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 35,
+      "watching_count": 23
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T06:38:57.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBp3Juw",
+      "__typename": "User",
+      "login": "VectorNd",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111004091?u=60e9cfbcbd4705c9deb4c4308e91a55a54d37e38&v=4",
+      "bio": "EEE'25 @ IIT-BHU ",
+      "created_at": {
+        "$date": "2022-08-10T17:01:07.000Z"
+      },
+      "database_id": 111004091,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Rishabh Kamboj",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-08-19T12:26:31.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 1,
+      "repositories_count": 28,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 59,
+      "watching_count": 17
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T06:30:58.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCjBKMg",
+      "__typename": "User",
+      "login": "backend-younghoon-choi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/170936882?u=df86845eb03a1d9b85047755dbebfa90a4456593&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2024-05-27T10:17:41.000Z"
+      },
+      "database_id": 170936882,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "최영훈 (Younghoon Choi)",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-06-21T04:39:33.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 1,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 6,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T05:46:56.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjM2OTI1MTI=",
+      "__typename": "User",
+      "login": "julianammann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3692512?u=a6885dd2afb2941c363ce9623a21b2133606708b&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2013-02-25T10:05:07.000Z"
+      },
+      "database_id": 3692512,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Germany",
+      "name": "Julian Ammann",
+      "pronouns": "he/him",
+      "updated_at": {
+        "$date": "2024-08-22T08:31:24.000Z"
+      },
+      "followers_count": 12,
+      "following_count": 21,
+      "gists_count": 1,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 2,
+      "repositories_count": 4,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 62,
+      "watching_count": 4
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T05:45:15.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjkwOTE2OTIy",
+      "__typename": "User",
+      "login": "TZ113",
+      "avatar_url": "https://avatars.githubusercontent.com/u/90916922?v=4",
+      "bio": "Hi, I am Toufique Ziad, a software developer, obviously. I love coding and always try to write clean, readable and secure code and maintain best practices.",
+      "created_at": {
+        "$date": "2021-09-17T14:13:12.000Z"
+      },
+      "database_id": 90916922,
+      "email": "earnestlearneran@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "name": "casper",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "linkedin": "in/toufique-ziad-3489aa255"
+      },
+      "updated_at": {
+        "$date": "2024-08-06T07:15:22.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 4,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 1,
+      "repositories_count": 16,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 26,
+      "watching_count": 12
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T02:39:06.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCq05Dg",
+      "__typename": "User",
+      "login": "LiJunyu559",
+      "avatar_url": "https://avatars.githubusercontent.com/u/179124494?v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2024-08-22T10:40:28.000Z"
+      },
+      "database_id": 179124494,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "LiJunyu",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-08-22T11:31:35.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 10,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T02:07:33.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCohYaA",
+      "__typename": "User",
+      "login": "tranhung0302",
+      "avatar_url": "https://avatars.githubusercontent.com/u/176707688?u=05fed206a56fa22cc1feba78ff68345e255e01bb&v=4",
+      "created_at": {
+        "$date": "2024-07-26T19:02:53.000Z"
+      },
+      "database_id": 176707688,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-05T09:39:35.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 19,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-05T01:59:05.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjI1MjI4Njg2",
+      "__typename": "User",
+      "login": "EvgeniyUS",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25228686?u=f37ff1d2696233c9594b77ff82996a43de6a0a62&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2017-01-19T16:44:53.000Z"
+      },
+      "database_id": 25228686,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Saint-Petersburg, Russia",
+      "name": "Evgeniy",
+      "updated_at": {
+        "$date": "2022-09-27T16:47:43.000Z"
+      },
+      "followers_count": 2,
+      "following_count": 2,
+      "gists_count": 0,
+      "issues_count": 2,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 10,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 6,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T21:44:40.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjcxNTY1MDcx",
+      "__typename": "User",
+      "login": "Graphiq",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71565071?u=fc53d9e770fcdc5b4e4eea8d33eb03e92c792a8f&v=4",
+      "bio": "",
+      "company": "@Graphiq",
+      "created_at": {
+        "$date": "2020-09-19T17:48:56.000Z"
+      },
+      "database_id": 71565071,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-08-01T18:07:33.000Z"
+      },
+      "followers_count": 4,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 3,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T20:28:47.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjQyMTg3MTA2",
+      "__typename": "User",
+      "login": "Neo00007",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42187106?v=4",
+      "bio": "A rookie, here to learn!",
+      "created_at": {
+        "$date": "2018-08-07T19:11:51.000Z"
+      },
+      "database_id": 42187106,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Salman Selim",
+      "pronouns": "he/him",
+      "updated_at": {
+        "$date": "2024-09-01T00:58:11.000Z"
+      },
+      "website_url": "https://github.com/Neo00007",
+      "followers_count": 26,
+      "following_count": 323,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 25,
+      "repositories_count": 26,
+      "repositories_contributed_to_count": 2,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 1356,
+      "watching_count": 10
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T20:11:03.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCJl6gg",
+      "__typename": "User",
+      "login": "YashRaj1506",
+      "avatar_url": "https://avatars.githubusercontent.com/u/144276098?u=47724b4262ea0f4f92538d8f1f7ae2880a297fe5&v=4",
+      "created_at": {
+        "$date": "2023-09-06T19:02:10.000Z"
+      },
+      "database_id": 144276098,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-29T13:51:25.000Z"
+      },
+      "followers_count": 17,
+      "following_count": 22,
+      "gists_count": 0,
+      "issues_count": 2,
+      "organizations_count": 0,
+      "pull_requests_count": 5,
+      "repositories_count": 36,
+      "repositories_contributed_to_count": 2,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 5,
+      "watching_count": 18
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T19:19:30.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjMzNzg1Mjcy",
+      "__typename": "User",
+      "login": "samy-aitouakli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33785272?u=149cda72ea41efe9b0a5640314c3e87cd0f067ed&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2017-11-18T14:28:45.000Z"
+      },
+      "database_id": 33785272,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-09-04T19:09:00.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 24,
+      "repositories_count": 1,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 3,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T18:59:33.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjc3MTg5MDk0",
+      "__typename": "User",
+      "login": "mohsinaftab29",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77189094?v=4",
+      "bio": "Design, Develop, Deliver",
+      "company": "Coding Facts",
+      "created_at": {
+        "$date": "2021-01-09T08:10:05.000Z"
+      },
+      "database_id": 77189094,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Rawala Kot, Azad Kashmir",
+      "name": "Mohsin Aftab",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "youtube": "@CodingFacts",
+        "twitter": "@codingfact",
+        "facebook": "codingfacts",
+        "instagram": "codingfacts23"
+      },
+      "twitter_username": "codingfact",
+      "updated_at": {
+        "$date": "2024-09-05T08:38:52.000Z"
+      },
+      "website_url": "https://www.codingfacts.com",
+      "followers_count": 5,
+      "following_count": 4,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 1,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 2,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T18:46:39.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjc3NjI0MTYx",
+      "__typename": "User",
+      "login": "andreimuller92",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77624161?v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2021-01-18T13:25:36.000Z"
+      },
+      "database_id": 77624161,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Andrei Inácio Müller",
+      "updated_at": {
+        "$date": "2024-08-20T13:16:36.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 18,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T17:56:19.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCTZLpA",
+      "__typename": "User",
+      "login": "AsTheRepoSoTheCode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/154553252?v=4",
+      "created_at": {
+        "$date": "2023-12-21T19:25:13.000Z"
+      },
+      "database_id": 154553252,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-26T04:51:41.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 2,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 39,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T16:37:48.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBtemfw",
+      "__typename": "User",
+      "login": "kwello-alexhicks",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114796159?u=38816314ad5485e7a46288475a5062a764b48b61&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2022-10-01T05:46:25.000Z"
+      },
+      "database_id": 114796159,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Alex @ Kwello",
+      "updated_at": {
+        "$date": "2024-08-23T05:10:20.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 1,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 8,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 1,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 4,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T12:42:21.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjc2NTQwNTg3",
+      "__typename": "User",
+      "login": "V3lectronics",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76540587?u=82fc6597e2c5cb44c3249113beecd2f606c53a06&v=4",
+      "bio": "jwaga76@gmail.com",
+      "created_at": {
+        "$date": "2020-12-24T00:03:51.000Z"
+      },
+      "database_id": 76540587,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "V Electronics",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-09-04T12:35:16.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 1,
+      "gists_count": 0,
+      "issues_count": 1,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 4,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 4,
+      "watching_count": 4
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T11:47:19.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjIzMjExMTM5",
+      "__typename": "User",
+      "login": "zht1130",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23211139?u=0ba66ab9984d74004f2f78f6f36fb31e9c82c17d&v=4",
+      "bio": "",
+      "company": "Imperial College London",
+      "created_at": {
+        "$date": "2016-11-02T09:58:23.000Z"
+      },
+      "database_id": 23211139,
+      "email": "haotian.zhu1130@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "United Kingdom",
+      "name": "Haotian Zhu",
+      "updated_at": {
+        "$date": "2024-08-19T08:36:42.000Z"
+      },
+      "followers_count": 30,
+      "following_count": 19,
+      "gists_count": 0,
+      "issues_count": 10,
+      "organizations_count": 0,
+      "pull_requests_count": 2,
+      "repositories_count": 11,
+      "repositories_contributed_to_count": 14,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 160,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T10:37:18.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjUxNDcyMA==",
+      "__typename": "User",
+      "login": "vtomasr5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/514720?u=67b5bd0eb8d03663dc8abf1bfa370079d2b4e872&v=4",
+      "bio": "DevOps/SRE Engineer focused on automation and NoSQL DBA.\r\nI hate toil.",
+      "company": "@closeio",
+      "created_at": {
+        "$date": "2010-12-08T13:59:58.000Z"
+      },
+      "database_id": 514720,
+      "email": "vtomasr5@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Spain",
+      "name": "Vicenç Juan Tomàs Montserrat",
+      "social_accounts": {
+        "twitter": "@vtomasr5"
+      },
+      "twitter_username": "vtomasr5",
+      "updated_at": {
+        "$date": "2024-05-07T12:01:05.000Z"
+      },
+      "followers_count": 29,
+      "following_count": 18,
+      "gists_count": 4,
+      "issues_count": 22,
+      "organizations_count": 0,
+      "pull_requests_count": 34,
+      "repositories_count": 85,
+      "repositories_contributed_to_count": 4,
+      "repository_discussions_count": 2,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 1225,
+      "watching_count": 64
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T10:06:56.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjkyMTgwMw==",
+      "__typename": "User",
+      "login": "lordang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/921803?v=4",
+      "bio": "\r\n",
+      "created_at": {
+        "$date": "2011-07-18T01:38:50.000Z"
+      },
+      "database_id": 921803,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Seoul, Korea",
+      "name": "Sookyom Kim",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-03-31T06:52:55.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 2,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 6,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 369,
+      "watching_count": 5
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T09:29:17.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjEwMTEzNjY4",
+      "__typename": "User",
+      "login": "kuangbeibei",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10113668?u=87d72b3f2e60955e56831d4d1679f5322fcf88e7&v=4",
+      "bio": "software anywhere",
+      "company": "Basepair",
+      "created_at": {
+        "$date": "2014-12-08T08:31:18.000Z"
+      },
+      "database_id": 10113668,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Australia",
+      "name": "Beth",
+      "pronouns": "she/her",
+      "updated_at": {
+        "$date": "2024-09-04T09:29:10.000Z"
+      },
+      "followers_count": 7,
+      "following_count": 32,
+      "gists_count": 0,
+      "issues_count": 1,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 39,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 106,
+      "watching_count": 34
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T09:01:47.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjY1MzcwOTU0",
+      "__typename": "User",
+      "login": "hamiltonlumati",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65370954?u=b1f42d44c4dd211462c8610ef6cc5ce155c3f408&v=4",
+      "bio": "Full Stack Developer || Microsoft Consultant || Electrical Engineer",
+      "company": "ITGest Angola",
+      "created_at": {
+        "$date": "2020-05-14T21:24:03.000Z"
+      },
+      "database_id": 65370954,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Luanda, Angola",
+      "name": "Hamilton Lumati",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "twitter": "@onaha_",
+        "linkedin": "in/hamiltonlumati"
+      },
+      "twitter_username": "onaha_",
+      "updated_at": {
+        "$date": "2024-09-04T23:28:52.000Z"
+      },
+      "followers_count": 15,
+      "following_count": 16,
+      "gists_count": 0,
+      "issues_count": 2,
+      "organizations_count": 0,
+      "pull_requests_count": 3,
+      "repositories_count": 11,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 54,
+      "watching_count": 12
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T08:19:45.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjQ1MjM1MDAz",
+      "__typename": "User",
+      "login": "mmtaee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45235003?v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2018-11-21T13:48:07.000Z"
+      },
+      "database_id": 45235003,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Masoud Taee",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-07-18T16:35:18.000Z"
+      },
+      "followers_count": 30,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 7,
+      "repositories_count": 10,
+      "repositories_contributed_to_count": 1,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 32,
+      "watching_count": 4
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T07:40:33.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCqcZVA",
+      "__typename": "User",
+      "login": "aydincetinoglu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/178723156?v=4",
+      "bio": "UI Framework with",
+      "created_at": {
+        "$date": "2024-08-18T15:27:45.000Z"
+      },
+      "database_id": 178723156,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "christopher neil",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-09-04T08:20:53.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 8,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 1,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 7,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T06:36:07.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjYwMjYzMg==",
+      "__typename": "User",
+      "login": "gthanks",
+      "avatar_url": "https://avatars.githubusercontent.com/u/602632?u=a715d24629dd9749d45a1de14157df41677498f5&v=4",
+      "created_at": {
+        "$date": "2011-02-06T00:18:46.000Z"
+      },
+      "database_id": 602632,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-22T01:08:36.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 2,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 5,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 8,
+      "watching_count": 5
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T06:32:24.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjE4NDExODEz",
+      "__typename": "User",
+      "login": "silentmans",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18411813?u=a71c1398a6b87d2640363612153181b2b1315912&v=4",
+      "created_at": {
+        "$date": "2016-04-12T03:35:25.000Z"
+      },
+      "database_id": 18411813,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-08-27T02:35:13.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 6,
+      "repositories_count": 2,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 130,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T03:24:26.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCPhbsg",
+      "__typename": "User",
+      "login": "dave-8888",
+      "avatar_url": "https://avatars.githubusercontent.com/u/150494130?v=4",
+      "created_at": {
+        "$date": "2023-11-11T01:22:06.000Z"
+      },
+      "database_id": 150494130,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-09-04T03:25:15.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 7,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T03:10:58.000Z"
+    },
+    "user": {
+      "id": "U_kgDOCmKJ1Q",
+      "__typename": "User",
+      "login": "mathwiththomas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174229973?u=404fd223163f770c458b24d6f9daab93082fb597&v=4",
+      "created_at": {
+        "$date": "2024-06-30T05:29:36.000Z"
+      },
+      "database_id": 174229973,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-09-05T14:48:25.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 0,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 30,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 90,
+      "watching_count": 4
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-04T01:19:49.000Z"
+    },
+    "user": {
+      "id": "U_kgDOB1nliA",
+      "__typename": "User",
+      "login": "amanuelcm27",
+      "avatar_url": "https://avatars.githubusercontent.com/u/123331976?u=7ef21257aebdb82017a57ac8c3e162cd73606c85&v=4",
+      "bio": "Full-stack web-developer and so on to be mobile developer",
+      "created_at": {
+        "$date": "2023-01-22T21:12:46.000Z"
+      },
+      "database_id": 123331976,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "name": "amanuel firew",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-09-04T00:58:09.000Z"
+      },
+      "website_url": "https://amanuelfirewlema.vercel.app",
+      "followers_count": 0,
+      "following_count": 2,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 4,
+      "repositories_count": 15,
+      "repositories_contributed_to_count": 2,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 9,
+      "watching_count": 14
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T23:57:19.000Z"
+    },
+    "user": {
+      "id": "U_kgDOB-LWdA",
+      "__typename": "User",
+      "login": "RaphaelApeh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/132306548?u=dff78edb8a284ca5f22f2aad175237e096356602&v=4",
+      "bio": "Passionate Django & Python developer with a strong foundation in building dynamic, scalable web 🌐 applications.👩‍💻",
+      "created_at": {
+        "$date": "2023-05-01T21:22:34.000Z"
+      },
+      "database_id": 132306548,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Abuja,Nigeria",
+      "name": "Raphael Apeh ",
+      "pronouns": "he/him",
+      "social_accounts": {
+        "generic": "https://www.instagram.com/raphael_apeh37/?igsh=YzljYTk1ODg3Zg%3D%3D"
+      },
+      "updated_at": {
+        "$date": "2024-09-01T11:22:51.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 3,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 8,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 10,
+      "watching_count": 8
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T21:58:26.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjg4ODg2NDY5",
+      "__typename": "User",
+      "login": "FrankaY03",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88886469?v=4",
+      "created_at": {
+        "$date": "2021-08-13T11:19:39.000Z"
+      },
+      "database_id": 88886469,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "updated_at": {
+        "$date": "2024-09-03T21:58:18.000Z"
+      },
+      "followers_count": 0,
+      "following_count": 2,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 1,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 7,
+      "watching_count": 2
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T20:15:39.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjM2MTk5NTg3",
+      "__typename": "User",
+      "login": "parice02",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36199587?v=4",
+      "bio": "python, javascript, django, react native, bot, ai",
+      "created_at": {
+        "$date": "2018-02-06T15:15:25.000Z"
+      },
+      "database_id": 36199587,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Some where under the sky",
+      "name": "Muhammed Zeba",
+      "pronouns": "",
+      "social_accounts": {
+        "twitter": "@parice02"
+      },
+      "twitter_username": "parice02",
+      "updated_at": {
+        "$date": "2024-08-15T13:56:01.000Z"
+      },
+      "followers_count": 31,
+      "following_count": 33,
+      "gists_count": 0,
+      "issues_count": 16,
+      "organizations_count": 0,
+      "pull_requests_count": 11,
+      "repositories_count": 30,
+      "repositories_contributed_to_count": 3,
+      "repository_discussions_count": 2,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 64,
+      "watching_count": 22
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T19:02:03.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjE1NzQ1NjE1",
+      "__typename": "User",
+      "login": "travpeck",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15745615?v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2015-11-09T20:45:01.000Z"
+      },
+      "database_id": 15745615,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "name": "Travis",
+      "updated_at": {
+        "$date": "2024-07-19T17:05:50.000Z"
+      },
+      "followers_count": 1,
+      "following_count": 1,
+      "gists_count": 0,
+      "issues_count": 18,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 0,
+      "repositories_contributed_to_count": 2,
+      "repository_discussions_count": 1,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 7,
+      "watching_count": 0
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T17:44:40.000Z"
+    },
+    "user": {
+      "id": "MDQ6VXNlcjU0MjgzNDQx",
+      "__typename": "User",
+      "login": "zedjarvis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54283441?v=4",
+      "bio": "Full Stack Engineer | Python | Nodejs | AI Enthusiast",
+      "company": "Codeignite",
+      "created_at": {
+        "$date": "2019-08-19T16:37:03.000Z"
+      },
+      "database_id": 54283441,
+      "email": "omondicedo@gmail.com",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": true,
+      "is_site_admin": false,
+      "location": "Nairobi, Kenya",
+      "name": "Cedrouse Roll",
+      "pronouns": "",
+      "social_accounts": {
+        "twitter": "@CedrouseR",
+        "linkedin": "in/cedrouseroll-omondi-44b119252"
+      },
+      "twitter_username": "CedrouseR",
+      "updated_at": {
+        "$date": "2024-09-03T21:09:08.000Z"
+      },
+      "website_url": "https://zedjarvis.github.io/",
+      "followers_count": 5,
+      "following_count": 15,
+      "gists_count": 5,
+      "issues_count": 4,
+      "organizations_count": 1,
+      "pull_requests_count": 14,
+      "repositories_count": 53,
+      "repositories_contributed_to_count": 2,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 26,
+      "watching_count": 26
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T16:20:38.000Z"
+    },
+    "user": {
+      "id": "U_kgDOBs8xUw",
+      "__typename": "User",
+      "login": "fumizaki",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114241875?u=3409218cc42bc3855cb9e72cf110ddf2ab501853&v=4",
+      "bio": "",
+      "created_at": {
+        "$date": "2022-09-23T14:21:14.000Z"
+      },
+      "database_id": 114241875,
+      "email": "",
+      "has_sponsors_listing": false,
+      "is_bounty_hunter": false,
+      "is_campus_expert": false,
+      "is_developer_program_member": false,
+      "is_employee": false,
+      "is_git_hub_star": false,
+      "is_hireable": false,
+      "is_site_admin": false,
+      "location": "Japan",
+      "name": "Fumiya Matsuzaki",
+      "pronouns": "",
+      "updated_at": {
+        "$date": "2024-07-26T06:14:52.000Z"
+      },
+      "followers_count": 5,
+      "following_count": 10,
+      "gists_count": 0,
+      "issues_count": 0,
+      "organizations_count": 0,
+      "pull_requests_count": 0,
+      "repositories_count": 1,
+      "repositories_contributed_to_count": 0,
+      "repository_discussions_count": 0,
+      "sponsoring_count": 0,
+      "sponsors_count": 0,
+      "starred_repositories_count": 35,
+      "watching_count": 1
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T16:20:32.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T16:03:08.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T14:56:54.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T14:18:46.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T14:14:39.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T12:48:11.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T12:24:02.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T11:14:55.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T10:19:31.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T09:24:28.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T07:00:46.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T04:07:58.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T02:40:52.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T02:14:19.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T00:59:18.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T00:55:19.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T00:44:02.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-03T00:09:16.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T22:59:21.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T20:59:26.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T19:37:35.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T19:32:44.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T18:54:16.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T18:41:54.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T17:35:23.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T16:38:14.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T15:59:47.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T14:55:45.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T14:47:06.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T13:44:44.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T11:51:37.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T11:28:29.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T11:01:09.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T09:50:45.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T09:12:52.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T09:05:14.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T08:24:42.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T07:14:20.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T06:25:10.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T05:32:32.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T04:07:06.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T02:01:49.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T01:51:04.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T01:48:00.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-02T00:18:07.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T23:40:10.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T23:13:50.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T22:44:37.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T21:58:32.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T21:02:51.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T19:35:36.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T19:08:36.000Z"
+    }
+  },
+  {
+    "repository": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Stargazer",
+    "starred_at": {
+      "$date": "2024-09-01T18:28:09.000Z"
+    }
+  }
+]

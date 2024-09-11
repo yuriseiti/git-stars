@@ -1,0 +1,124 @@
+[
+  {
+    "_id": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "id": "MDEwOlJlcG9zaXRvcnk0MTY0NDgy",
+    "__typename": "Repository",
+    "database_id": 4164482,
+    "description": "The Web framework for perfectionists with deadlines.",
+    "name": "django",
+    "name_with_owner": "django/django",
+    "open_graph_image_url": "https://opengraph.githubassets.com/adc0e4d2b07f037864239bf34e2a5b182aa2d4ce88b9b286e5dc6fe87416493f/django/django",
+    "owner": "MDEyOk9yZ2FuaXphdGlvbjI3ODA0",
+    "primary_language": "Python",
+    "allow_update_branch": false,
+    "auto_merge_allowed": false,
+    "code_of_conduct": "other",
+    "contributing_guidelines": "======================\nContributing to Django\n======================\n\nAs an open source project, Django welcomes contributions of many forms.\n\nExamples of contributions include:\n\n* Code patches\n* Documentation improvements\n* Bug reports and patch reviews\n\nExtensive contribution guidelines are available in the repository at\n``docs/internals/contributing/``, or online at:\n\nhttps://docs.djangoproject.com/en/dev/internals/contributing/\n\n**Warning: non-trivial pull requests (anything more than fixing a typo) without\nTrac tickets will be closed!** `Please file a ticket`__ to suggest changes.\n\n__ https://code.djangoproject.com/newticket\n\nDjango uses Trac to keep track of bugs, feature requests, and associated\npatches because GitHub doesn't provide adequate tooling for its community.\nPatches can be submitted as pull requests, but if you don't file a ticket,\nit's unlikely that we'll notice your contribution.\n\nCode of Conduct\n===============\n\nAs a contributor, you can help us keep the Django community open and inclusive.\nPlease read and follow our `Code of Conduct <https://www.djangoproject.com/conduct/>`_.\n",
+    "created_at": {
+      "$date": "2012-04-28T02:47:18.000Z"
+    },
+    "default_branch": "main",
+    "commits_count": 32891,
+    "delete_branch_on_merge": false,
+    "disk_usage": 255681,
+    "forking_allowed": true,
+    "funding_links": [
+      {
+        "platform": "GITHUB",
+        "url": "https://github.com/django"
+      },
+      {
+        "platform": "CUSTOM",
+        "url": "https://www.djangoproject.com/fundraising/"
+      }
+    ],
+    "has_discussions_enabled": false,
+    "has_issues_enabled": false,
+    "has_projects_enabled": false,
+    "has_sponsorships_enabled": true,
+    "has_vulnerability_alerts_enabled": true,
+    "has_wiki_enabled": false,
+    "homepage_url": "https://www.djangoproject.com/",
+    "is_archived": false,
+    "is_blank_issues_enabled": true,
+    "is_disabled": false,
+    "is_empty": false,
+    "is_fork": false,
+    "is_in_organization": true,
+    "is_locked": false,
+    "is_mirror": false,
+    "is_security_policy_enabled": true,
+    "languages": [
+      {
+        "name": "Python",
+        "size": 17183735
+      },
+      {
+        "name": "CSS",
+        "size": 93757
+      },
+      {
+        "name": "JavaScript",
+        "size": 157222
+      },
+      {
+        "name": "HTML",
+        "size": 250649
+      },
+      {
+        "name": "Smarty",
+        "size": 392
+      },
+      {
+        "name": "Procfile",
+        "size": 47
+      }
+    ],
+    "license_info": "bsd-3-clause",
+    "merge_commit_allowed": false,
+    "merge_commit_message": "PR_TITLE",
+    "merge_commit_title": "MERGE_MESSAGE",
+    "pushed_at": {
+      "$date": "2024-09-03T14:25:19.000Z"
+    },
+    "rebase_merge_allowed": true,
+    "repository_topics": [
+      "python",
+      "django",
+      "web",
+      "framework",
+      "orm",
+      "templates",
+      "models",
+      "views",
+      "apps"
+    ],
+    "security_policy_url": "https://github.com/django/django/security/policy",
+    "squash_merge_allowed": true,
+    "squash_merge_commit_message": "COMMIT_MESSAGES",
+    "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+    "updated_at": {
+      "$date": "2024-09-05T17:14:10.000Z"
+    },
+    "uses_custom_open_graph_image": false,
+    "visibility": "PUBLIC",
+    "web_commit_signoff_required": false,
+    "assignable_users_count": 56,
+    "deployments_count": 906,
+    "discussions_count": 0,
+    "environments_count": 1,
+    "fork_count": 31480,
+    "issues_count": 0,
+    "milestones_count": 0,
+    "packages_count": 0,
+    "pull_requests_count": 18488,
+    "branches_count": 28,
+    "tags_count": 421,
+    "releases_count": 0,
+    "rulesets_count": 0,
+    "stargazers_count": 79045,
+    "submodules_count": 0,
+    "vulnerability_alerts_count": 0,
+    "watchers_count": 2298
+  }
+]

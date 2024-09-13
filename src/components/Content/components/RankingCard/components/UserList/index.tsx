@@ -18,7 +18,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
       {users.map((user, index) => (
         <UserContainer key={index}>
           <div className="column">
-            <img src={user.avatar} alt="User Avatar" />
+            <img src={user.avatar} alt="User Avatar" style={{ height: "40px", borderRadius: "16px" }}/>
           </div>
           <div className="column">
             <div>{user.name}</div>

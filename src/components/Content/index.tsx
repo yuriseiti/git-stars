@@ -3,22 +3,35 @@ import { Container } from "./styles";
 import InfoCard from "./components/InfoCard";
 import RankingCard from "./components/RankingCard";
 import SearchBar from "./components/SearchBar";
+import OwnerCard from "./components/OwnerCard";
+
+import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
+import UpdateRoundedIcon from '@mui/icons-material/UpdateRounded';
+import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
 
 const Content: React.FC = () => {
   return (
     <Container>
-      <div style={{ display: "flex", justifyContent: "center", gap: "16px", width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "16px",
+          width: "60vw",
+          padding: "0 22px"
+        }}
+      >
         <SearchBar />
       </div>
       <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-        <InfoCard icon="🦄" value="42" label="Unicorn" />
-        <InfoCard icon="🚀" value="42" label="Rocket" />
-        <InfoCard icon="🌈" value="42" label="Rainbow" />
-        <InfoCard icon="🍕" value="42" label="Pizza" />
+        <InfoCard icon={<StarBorderRoundedIcon />} value="42" label="Estrelas" />
+        <InfoCard icon={<PeopleOutlineRoundedIcon />} value="42" label="Seguidores" />
+        <InfoCard icon={<UpdateRoundedIcon />} value="42" label="Atualizado em" />
+        <OwnerCard user={ { avatar: "null", name: "teste", handle: "teste"}} />
       </div>
       <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
         <RankingCard
-          title="Top 5 Users"
+          title="Primeiras estrelas"
           users={[
             {
               avatar: "🦄",
@@ -29,7 +42,7 @@ const Content: React.FC = () => {
           ]}
         />
         <RankingCard
-          title="Top 5 Users"
+          title="Últimas estrelas"
           users={[
             {
               avatar: "🦄",
@@ -64,7 +77,7 @@ const Content: React.FC = () => {
           ]}
         />
         <RankingCard
-          title="Top 5 Users"
+          title="Mais seguidores"
           users={[
             {
               avatar: "🦄",

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from './styles';
 
 interface InfoCardProps {
-    icon: string;
+    icon: React.ReactNode;
     value: string;
     label: string;
 }

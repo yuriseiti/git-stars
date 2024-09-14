@@ -14,10 +14,10 @@ interface OwnerCardProps {
 const OwnerCard: React.FC<OwnerCardProps> = ({ user }) => {
   return (
     <Container>
-      <div className="owner-card-icon">Onwer</div>
+      <div className="owner-card-icon">Owner</div>
       <UserContainer>
         <div className="column">
-          <img src={user.avatar} alt="User Avatar" />
+          <img src={user.avatar} alt="User Avatar" style={{ height: "40px", borderRadius: "16px" }}/>
         </div>
         <div className="column">
           <div>{user.name}</div>

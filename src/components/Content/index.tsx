@@ -11,58 +11,41 @@ import PeopleOutlineRoundedIcon from "@mui/icons-material/PeopleOutlineRounded";
 
 import { format } from "date-fns";
 
-import usersMock from "../../mocks/django@django.Stargazer.100.json";
+import usersMock from "../../mocks/django@django.Stargazer.json";
 import repositoryMock from "../../mocks/django@django.Repository.json";
 import LineChart from "./components/LineChart";
 
 const Content: React.FC = () => {
-  const firstStargazers = usersMock
-    .slice(0, 5)
-    .sort((a, b) => {
-      return (
-        new Date(a.starred_at?.$date).getTime() -
-        new Date(b.starred_at?.$date).getTime()
-      );
-    })
-    .map((user) => {
-      return {
-        avatar: user.user?.avatar_url,
-        name: user.user?.name,
-        handle: user.user?.login,
-        value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
-      };
-    });
+  const sortedUsers = usersMock.sort((a, b) => {
+    return (
+      new Date(a.starred_at?.$date).getTime() -
+      new Date(b.starred_at?.$date).getTime()
+    );
+  });
 
-  const lastStargazers = usersMock
-    .slice(-5)
-    .sort((a, b) => {
-      return (
-        new Date(a.starred_at?.$date).getTime() -
-        new Date(b.starred_at?.$date).getTime()
-      );
-    })
-    .map((user) => {
-      return {
-        avatar: user.user?.avatar_url,
-        name: user.user?.name,
-        handle: user.user?.login,
-        value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
-      };
-    });
+  const firstStargazers = sortedUsers.slice(0, 5).map((user) => ({
+    avatar: user.user?.avatar_url,
+    name: user.user?.name,
+    handle: user.user?.login,
+    value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
+  }));
+
+  const lastStargazers = sortedUsers.slice(-5).map((user) => ({
+    avatar: user.user?.avatar_url,
+    name: user.user?.name,
+    handle: user.user?.login,
+    value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
+  }));
 
   const mostFollowers = usersMock
-    .sort((a, b) => {
-      return b.user?.followers_count - a.user?.followers_count;
-    })
+    .sort((a, b) => b.user?.followers_count - a.user?.followers_count)
     .slice(0, 5)
-    .map((user) => {
-      return {
-        avatar: user.user?.avatar_url,
-        name: user.user?.name,
-        handle: user.user?.login,
-        value: user.user?.followers_count,
-      };
-    });
+    .map((user) => ({
+      avatar: user.user?.avatar_url,
+      name: user.user?.name,
+      handle: user.user?.login,
+      value: user.user?.followers_count,
+    }));
 
   const repoStars = repositoryMock[0].stargazers_count;
   const repoFollowers = repositoryMock[0].watchers_count;

@@ -1,5 +1,7 @@
 import React from "react";
-import { ListContainer, UserContainer } from "./styles";
+import { Grid2 } from "@mui/material"; 
+import { Paper, Typography } from "@mui/material";
+import { ListContainer } from "./styles";
 
 interface User {
   avatar: string;
@@ -13,21 +15,40 @@ interface UserListProps {
 }
 
 const UserList: React.FC<UserListProps> = ({ users }) => {
+  const redirectToGithub = (handle: string) => {
+    const githubUrl = `https://github.com/${handle}`;
+    window.open(githubUrl, "_blank");
+  };
+
   return (
     <ListContainer>
       {users.map((user, index) => (
-        <UserContainer key={index}>
-          <div className="column">
-            <img src={user.avatar} alt="User Avatar" style={{ height: "40px", borderRadius: "16px" }}/>
-          </div>
-          <div className="column">
-            <div>{user.name}</div>
-            <div>{user.handle}</div>
-          </div>
-          <div className="column">
-            <div>{user.value}</div>
-          </div>
-        </UserContainer>
+        <Grid2 item xs={12} key={index}>
+          <Paper
+            elevation={0}
+            style={{ padding: "16px", display: "flex", alignItems: "center" }}
+          >
+            <img
+              src={user.avatar}
+              alt="User Avatar"
+              style={{
+                height: "40px",
+                borderRadius: "16px",
+                marginRight: "16px",
+              }}
+            />
+            <div
+              style={{ flexGrow: 1, cursor: "pointer" }}
+              onClick={() => redirectToGithub(user.handle)}
+            >
+              <Typography>{user.name}</Typography>
+              <Typography variant="body2" color="textSecondary">
+                @{user.handle}
+              </Typography>
+            </div>
+            <Typography variant="body1">{user.value}</Typography>
+          </Paper>
+        </Grid2>
       ))}
     </ListContainer>
   );

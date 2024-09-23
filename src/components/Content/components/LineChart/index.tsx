@@ -1,85 +1,111 @@
-import * as d3 from 'd3';
-import { useEffect, useRef } from 'react';
+import * as d3 from "d3";
+import { useEffect, useRef } from "react";
+import { Container } from "./styles";
 
 interface Stargazer {
-    starred_at: {
-        $date: string;
-    };
+  starred_at: {
+    $date: string;
+  };
 }
 
 interface LineChartProps {
-    data: Stargazer[];
+  data: Stargazer[];
+  mode: "variation" | "sum";
 }
 
-const LineChart: React.FC<LineChartProps> = ({ data }) => {
-    const svgRef = useRef<SVGSVGElement | null>(null);
+const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
+  const svgRef = useRef<SVGSVGElement | null>(null);
 
-    useEffect(() => {
-        // Prepare the data
-        const stargazerData = data.map(node => ({
-            starredAt: new Date(node.starred_at.$date)
-        }));
+  useEffect(() => {
+    // Prepare the data
+    const stargazerData = data.map((node) => ({
+      starredAt: new Date(node.starred_at.$date),
+    }));
 
-        // Group data by day and count stars
-        const groupedData = d3.rollup(
-            stargazerData,
-            v => v.length,
-            d => d3.timeDay(d.starredAt)
-        );
+    // Group data by day and count stars
+    const groupedData = d3.rollup(
+      stargazerData,
+      (v) => v.length,
+      (d) => d3.timeDay(d.starredAt)
+    );
 
-        // Convert grouped data to arrays
-        const dates = Array.from(groupedData.keys()).sort((a, b) => a.getTime() - b.getTime());
-        const starCounts = Array.from(groupedData.values());
+    // Convert grouped data to arrays
+    const dates = Array.from(groupedData.keys()).sort(
+      (a, b) => a.getTime() - b.getTime()
+    );
+    const starCounts = Array.from(groupedData.values());
 
-        // Calculate cumulative counts
-        const cumulativeCounts = starCounts.reduce((acc, count, index) => {
-            const previous = acc[index - 1] || 0; // Previous cumulative count
-            acc.push(previous + count); // Add current count to previous
-            return acc;
-        }, [] as number[]);
+    let lineValues: number[] = [];
 
-        // Set up the SVG canvas dimensions
-        const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-        const width = 800 - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+    if (mode === "sum") {
+      lineValues = starCounts.reduce((acc, count, index) => {
+        const previous = acc[index - 1] || 0; // Previous cumulative count
+        acc.push(previous + count); // Add current count to previous
+        return acc;
+      }, [] as number[]);
+    }
 
-        const svg = d3.select(svgRef.current)
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', `translate(${margin.left},${margin.top})`);
+    if (mode === "variation") {
+      lineValues = starCounts;
+    }
 
-        // Set up the scales
-        const x = d3.scaleTime()
-            .range([0, width])
-            .domain(d3.extent(dates) as [Date, Date]);
+    // Set up the SVG canvas dimensions
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
-        const y = d3.scaleLinear()
+    const svg = d3
+      .select(svgRef.current)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Set up the scales
+    const x = d3
+      .scaleTime()
+      .range([0, width])
+      .domain(d3.extent(dates) as [Date, Date]);
+
+    const y =
+      mode === "sum"
+        ? d3
+            .scaleLinear()
             .range([height, 0])
-            .domain([0, d3.max(cumulativeCounts) as number]);
+            .domain([0, d3.max(lineValues) as number])
+        : d3
+            .scaleLog()
+            .range([height, 0])
+            .domain([1, d3.max(lineValues) as number]);
 
-        // Draw the line
-        const line = d3.line()
-            .x((d, i) => x(dates[i]))
-            .y(d => y(d));
+    // Draw the line
+    const line = d3
+      .line()
+      .x((d, i) => x(dates[i]))
+      .y((d) => y(d));
 
-        svg.append('path')
-            .datum(cumulativeCounts)
-            .attr('fill', 'none')
-            .attr('stroke', 'steelblue')
-            .attr('stroke-width', 1.5)
-            .attr('d', line);
+    svg
+      .append("path")
+      .datum(lineValues)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("d", line);
 
-        // Draw the axes
-        svg.append('g')
-            .attr('transform', `translate(0,${height})`)
-            .call(d3.axisBottom(x));
+    // Draw the axes
+    svg
+      .append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x));
 
-        svg.append('g')
-            .call(d3.axisLeft(y));
-    }, [data]);
+    svg.append("g").call(d3.axisLeft(y));
+  }, [data, mode]);
 
-    return <svg ref={svgRef}></svg>;
+  return (
+    <Container>
+      <svg ref={svgRef}></svg>
+    </Container>
+  );
 };
 
 export default LineChart;

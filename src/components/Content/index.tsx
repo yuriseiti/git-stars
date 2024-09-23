@@ -37,6 +37,10 @@ const Content: React.FC = () => {
     value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
   }));
 
+  const formatNumber = (number: number) => {
+    return new Intl.NumberFormat("pt-BR").format(number);
+  };
+
   const mostFollowers = usersMock
     .sort((a, b) => b.user?.followers_count - a.user?.followers_count)
     .slice(0, 5)
@@ -44,7 +48,7 @@ const Content: React.FC = () => {
       avatar: user.user?.avatar_url,
       name: user.user?.name,
       handle: user.user?.login,
-      value: user.user?.followers_count,
+      value: formatNumber(user.user?.followers_count),
     }));
 
   const repoStars = repositoryMock[0].stargazers_count;
@@ -53,6 +57,7 @@ const Content: React.FC = () => {
     new Date(repositoryMock[0].updated_at.$date),
     "dd/MM/yyyy"
   );
+
   const repoOwner = {
     avatar:
       "https://avatars.githubusercontent.com/u/12102640?u=9846c91150e82225b23e2e03d1a012bc9782ba9f&v=4",
@@ -92,7 +97,7 @@ const Content: React.FC = () => {
         <OwnerCard user={repoOwner} />
       </div>
       <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-        <LineChart data={usersMock} />
+        <LineChart data={usersMock} mode={"sum"} />
       </div>
       <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
         <RankingCard title="Primeiras estrelas" users={firstStargazers} />

@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   padding: 0 16px;
   background-color: #3d4c7a;
   overflow: hidden;
+  justify-content: space-between;
   align-items: center;
   z-index: 100;
 `;

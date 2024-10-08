@@ -17,7 +17,6 @@ import { useRepoContext } from "../../contexts/repoContext";
 
 const Content: React.FC = () => {
   const { repoInfo } = useRepoContext();
-  console.log("🚀 ~ repoInfo:", repoInfo);
 
   const [mode, setMode] = useState<"sum" | "variation">("sum");
 

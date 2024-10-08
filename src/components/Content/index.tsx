@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "./styles";
 import InfoCard from "./components/InfoCard";
 import RankingCard from "./components/RankingCard";
@@ -12,10 +12,15 @@ import PeopleOutlineRoundedIcon from "@mui/icons-material/PeopleOutlineRounded";
 import { format } from "date-fns";
 
 import usersMock from "../../mocks/django@django.Stargazer.json";
-import repositoryMock from "../../mocks/django@django.Repository.json";
 import LineChart from "./components/LineChart";
+import { useRepoContext } from "../../contexts/repoContext";
 
 const Content: React.FC = () => {
+  const { repoInfo } = useRepoContext();
+  console.log("🚀 ~ repoInfo:", repoInfo);
+
+  const [mode, setMode] = useState<"sum" | "variation">("sum");
+
   const sortedUsers = usersMock.sort((a, b) => {
     return (
       new Date(a.starred_at?.$date).getTime() -
@@ -51,18 +56,20 @@ const Content: React.FC = () => {
       value: formatNumber(user.user?.followers_count),
     }));
 
-  const repoStars = repositoryMock[0].stargazers_count;
-  const repoFollowers = repositoryMock[0].watchers_count;
-  const repoUpdatedAt = format(
-    new Date(repositoryMock[0].updated_at.$date),
-    "dd/MM/yyyy"
-  );
+  const repoStars = repoInfo?.stargazers_count ?? 0;
+  const repoFollowers = repoInfo?.watchers_count ?? 0;
+  const repoUpdatedAt = repoInfo?.updated_at
+    ? format(new Date(repoInfo.updated_at), "dd/MM/yyyy")
+    : "N/A";
 
   const repoOwner = {
-    avatar:
-      "https://avatars.githubusercontent.com/u/12102640?u=9846c91150e82225b23e2e03d1a012bc9782ba9f&v=4",
-    name: "Charles-A. Francisco",
-    handle: "charlesfranciscodev",
+    avatar: repoInfo?.owner?.avatar_url,
+    name: repoInfo?.owner?.name,
+    handle: repoInfo?.owner?.login,
+  };
+
+  const changeMode = () => {
+    setMode(mode === "sum" ? "variation" : "sum");
   };
 
   return (
@@ -78,32 +85,43 @@ const Content: React.FC = () => {
       >
         <SearchBar />
       </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-        <InfoCard
-          icon={<StarBorderRoundedIcon />}
-          value={repoStars.toString()}
-          label="Estrelas"
-        />
-        <InfoCard
-          icon={<PeopleOutlineRoundedIcon />}
-          value={repoFollowers.toString()}
-          label="Seguidores"
-        />
-        <InfoCard
-          icon={<UpdateRoundedIcon />}
-          value={repoUpdatedAt}
-          label="Atualizado em"
-        />
-        <OwnerCard user={repoOwner} />
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-        <LineChart data={usersMock} mode={"sum"} />
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-        <RankingCard title="Primeiras estrelas" users={firstStargazers} />
-        <RankingCard title="Últimas estrelas" users={lastStargazers} />
-        <RankingCard title="Mais seguidores" users={mostFollowers} />
-      </div>
+      {repoInfo && (
+        <>
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+          >
+            <InfoCard
+              icon={<StarBorderRoundedIcon />}
+              value={repoStars.toString()}
+              label="Estrelas"
+            />
+            <InfoCard
+              icon={<PeopleOutlineRoundedIcon />}
+              value={repoFollowers.toString()}
+              label="Seguidores"
+            />
+            <InfoCard
+              icon={<UpdateRoundedIcon />}
+              value={repoUpdatedAt}
+              label="Atualizado em"
+            />
+            <OwnerCard user={repoOwner} />
+          </div>
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+          >
+            <button onClick={changeMode}>Mudar modo</button>
+            <LineChart data={usersMock} mode={mode} />
+          </div>
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+          >
+            <RankingCard title="Primeiras estrelas" users={firstStargazers} />
+            <RankingCard title="Últimas estrelas" users={lastStargazers} />
+            <RankingCard title="Mais seguidores" users={mostFollowers} />
+          </div>
+        </>
+      )}
     </Container>
   );
 };

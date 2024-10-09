@@ -61,13 +61,16 @@ const Header: React.FC = () => {
     if (accessToken) {
       localStorage.setItem("accessToken", accessToken);
       setAccessToken(accessToken);
+      
+      // const userData = await fetch("https://api.github.com/user", {
+      //   method: "GET",
+      //   headers: {
+      //     Authorization: `token ${accessToken}`,
+      //   },
+      // });
 
-      const service = new GithubService(
-        new GithubClient("https://api.github.com", { apiToken: accessToken })
-      );
-
-      const userInfo = await service.user(accessToken);
-      console.log("🚀 ~ fetchAccessToken ~ userInfo:", userInfo);
+      const userData = await getUserData(accessToken);
+      console.log("🚀 ~ fetchAccessToken ~ userData:", userData)
     }
   };
 

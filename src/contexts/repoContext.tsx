@@ -25,7 +25,7 @@ interface RepoProviderProps {
 
 export const RepoProvider: React.FC<RepoProviderProps> = ({ children }) => {
   const [repoInfo, setRepoInfo] = useState<string | null>(null);
-  const [stargazersInfo, setStargazersInfo] = useState<string | null>(null);
+  const [stargazersInfo, setStargazersInfo] = useState<Array<any> | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('accessToken'));
 
   return (

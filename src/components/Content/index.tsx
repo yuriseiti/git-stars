@@ -11,41 +11,41 @@ import PeopleOutlineRoundedIcon from "@mui/icons-material/PeopleOutlineRounded";
 
 import { format } from "date-fns";
 
-import usersMock from "../../mocks/django@django.Stargazer.json";
 import LineChart from "./components/LineChart";
 import { useRepoContext } from "../../contexts/repoContext";
 
 const Content: React.FC = () => {
-  const { repoInfo } = useRepoContext();
+  const { repoInfo, stargazersInfo } = useRepoContext();
+  console.log("🚀 ~ stargazersInfo:", stargazersInfo)
 
   const [mode, setMode] = useState<"sum" | "variation">("sum");
 
-  const sortedUsers = usersMock.sort((a, b) => {
+  const sortedUsers = stargazersInfo ? stargazersInfo.sort((a, b) => {
     return (
-      new Date(a.starred_at?.$date).getTime() -
-      new Date(b.starred_at?.$date).getTime()
+      new Date(a.starred_at).getTime() -
+      new Date(b.starred_at).getTime()
     );
-  });
+  }) : [];
 
   const firstStargazers = sortedUsers.slice(0, 5).map((user) => ({
-    avatar: user.user?.avatar_url,
-    name: user.user?.name,
-    handle: user.user?.login,
-    value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
+    avatar: user.avatar_url,
+    name: user.name,
+    handle: user.login,
+    value: format(new Date(user.starred_at), "dd/MM/yyyy"),
   }));
 
   const lastStargazers = sortedUsers.slice(-5).map((user) => ({
-    avatar: user.user?.avatar_url,
-    name: user.user?.name,
-    handle: user.user?.login,
-    value: format(new Date(user.starred_at?.$date), "dd/MM/yyyy"),
+    avatar: user.avatar_url,
+    name: user.name,
+    handle: user.login,
+    value: format(new Date(user.starred_at), "dd/MM/yyyy"),
   }));
 
   const formatNumber = (number: number) => {
     return new Intl.NumberFormat("pt-BR").format(number);
   };
 
-  const mostFollowers = usersMock
+  const mostFollowers = sortedUsers
     .sort((a, b) => b.user?.followers_count - a.user?.followers_count)
     .slice(0, 5)
     .map((user) => ({
@@ -84,7 +84,7 @@ const Content: React.FC = () => {
       >
         <SearchBar />
       </div>
-      {repoInfo && (
+      {repoInfo && stargazersInfo && (
         <>
           <div
             style={{ display: "flex", justifyContent: "center", gap: "16px" }}
@@ -110,7 +110,7 @@ const Content: React.FC = () => {
             style={{ display: "flex", justifyContent: "center", gap: "16px" }}
           >
             <button onClick={changeMode}>Mudar modo</button>
-            <LineChart data={usersMock} mode={mode} />
+            <LineChart data={stargazersInfo} mode={mode} />
           </div>
           <div
             style={{ display: "flex", justifyContent: "center", gap: "16px" }}

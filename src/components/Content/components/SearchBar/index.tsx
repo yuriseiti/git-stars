@@ -8,7 +8,7 @@ import { GithubService, GithubClient } from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
 
 const SearchBar: React.FC = () => {
-  const { setRepoInfo } = useRepoContext();
+  const { setRepoInfo, setStargazersInfo } = useRepoContext();
 
   const [inputValue, setInputValue] = useState("");
 
@@ -28,16 +28,24 @@ const SearchBar: React.FC = () => {
     let stargazersInfo = [];
 
     for await (const res of service.resource("stargazers", {
-      respository: repoInfo!.id,
+      repository: repoInfo!.id,
     })) {
-      console.log(res);
+      console.log("🚀 ~ handleSearch ~ res:", res)
+      for (const stargazer of res.data) {
+        stargazersInfo.push({
+          starred_at: stargazer.starred_at,
+          avatar_url: stargazer.user.avatar_url,
+          name: stargazer.user.name,
+          login: stargazer.user.login,
+          // followers_count: stargazer.user.followers_count,
+        });
+      }
 
       if (!res.metadata.has_more) {
+        setStargazersInfo(stargazersInfo);
         break;
       }
     }
-
-    localStorage.setItem("repoInfo", JSON.stringify(repoInfo));
   };
 
   return (

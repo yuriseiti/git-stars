@@ -3,9 +3,7 @@ import { useEffect, useRef } from "react";
 import { Container } from "./styles";
 
 interface Stargazer {
-  starred_at: {
-    $date: string;
-  };
+  starred_at: Date;
 }
 
 interface LineChartProps {
@@ -19,7 +17,7 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
   useEffect(() => {
     // Prepare the data
     const stargazerData = data.map((node) => ({
-      starredAt: new Date(node.starred_at.$date),
+      starredAt: new Date(node.starred_at),
     }));
 
     // Group data by day and count stars

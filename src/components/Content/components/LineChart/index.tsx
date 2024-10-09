@@ -15,6 +15,9 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
+    // Clear previous content
+    d3.select(svgRef.current).selectAll("*").remove();
+
     // Prepare the data
     const stargazerData = data.map((node) => ({
       starredAt: new Date(node.starred_at),

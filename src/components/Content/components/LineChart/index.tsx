@@ -91,8 +91,8 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
       .scaleExtent([1, 10]) // Set zoom scale limits
       .on("zoom", (event) => {
         g.attr("transform", event.transform); // Apply the transform to the group
-        g.select(".x-axis").call(d3.axisBottom(x).scale(event.transform.rescaleX(x))); // Update x-axis
-        g.select(".y-axis").call(d3.axisLeft(y).scale(event.transform.rescaleY(y))); // Update y-axis
+        // g.select(".x-axis").call(d3.axisBottom(x).scale(event.transform.rescaleX(x))); // Update x-axis
+        // g.select(".y-axis").call(d3.axisLeft(y).scale(event.transform.rescaleY(y))); // Update y-axis
       });
 
    // Call zoom behavior on the svg element

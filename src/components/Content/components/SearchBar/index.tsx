@@ -4,8 +4,33 @@ import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import { Container } from "./styles";
 import { InputAdornment } from "@material-ui/core";
-import { GithubService, GithubClient } from "@gittrends-app/core";
+import {
+  ActorFragment,
+  BaseFragmentFactory,
+  Fragment,
+  GithubService,
+  GithubClient,
+} from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
+import { Class } from "type-fest";
+
+class CustomFactory extends BaseFragmentFactory {
+  create<T extends Fragment>(Ref: Class<T>): T {
+    if (Ref.name == ActorFragment.name) {
+      return new ActorFragment(Ref.name, {
+        factory: this,
+        fields: {
+          starred_at: true,
+          avatar_url: true,
+          name: true,
+          login: true,
+          followers_count: true,
+        },
+      }) as unknown as T;
+    }
+    return super.create(Ref);
+  }
+}
 
 const SearchBar: React.FC = () => {
   const { setRepoInfo, setStargazersInfo } = useRepoContext();
@@ -27,17 +52,17 @@ const SearchBar: React.FC = () => {
 
     let stargazersInfo = [];
 
-    for await (const res of service.resource("stargazers", {
+    for await (const res of service.stargazers({
       repository: repoInfo!.id,
+      factory: new CustomFactory(),
     })) {
-      console.log("🚀 ~ handleSearch ~ res:", res)
       for (const stargazer of res.data) {
         stargazersInfo.push({
           starred_at: stargazer.starred_at,
           avatar_url: stargazer.user.avatar_url,
           name: stargazer.user.name,
           login: stargazer.user.login,
-          // followers_count: stargazer.user.followers_count,
+          followers_count: stargazer.user.followers_count,
         });
       }
 

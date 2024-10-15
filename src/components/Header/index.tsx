@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const { accessToken, setAccessToken } = useRepoContext();
 
   const handleLogin = () => {
-    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=public_repo,read:user,read:org
+    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=public_repo,read:user,read:org,admin:enterprise
 `;
     window.location.href = githubAuthUrl;
   };

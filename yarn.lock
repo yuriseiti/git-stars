@@ -478,10 +478,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
 
-"@gittrends-app/core@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@gittrends-app/core/-/core-1.1.4.tgz#fccf36f7d1ba26a2a42311f38792f37863110657"
-  integrity sha512-kV+C+4etEADs4ioHB06b5ZTpVYrxvNnl/TN6BYVPcd5m3hgfDuiErgWjj906R7YGooRb8rPs+m5bWf1L/B1bLQ==
+"@gittrends-app/core@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@gittrends-app/core/-/core-2.1.1.tgz#f13b87ff30418ea0ee5c41d4c8e059a8ad2e3b8f"
+  integrity sha512-1FjCex7SpEakPCfOvD6/vyVhwajVT8zHhoYdsN0tKtu6HmVBaoMaN7HiU+fOKL4U8Gc35odkm9dcsHw10to6ew==
   dependencies:
     "@octokit/graphql" "^8.1.1"
     "@octokit/types" "^13.5.0"
@@ -3195,6 +3195,11 @@ type-check@^0.4.0, type-check@~0.4.0:
   integrity sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==
   dependencies:
     prelude-ls "^1.2.1"
+
+type-fest@^4.26.1:
+  version "4.26.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.26.1.tgz#a4a17fa314f976dd3e6d6675ef6c775c16d7955e"
+  integrity sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==
 
 type-is@~1.6.18:
   version "1.6.18"

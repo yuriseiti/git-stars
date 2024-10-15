@@ -46,13 +46,13 @@ const Content: React.FC = () => {
   };
 
   const mostFollowers = sortedUsers
-    .sort((a, b) => b.user?.followers_count - a.user?.followers_count)
+    .sort((a, b) => b.followers_count - a.followers_count)
     .slice(0, 5)
     .map((user) => ({
-      avatar: user.user?.avatar_url,
-      name: user.user?.name,
-      handle: user.user?.login,
-      value: formatNumber(user.user?.followers_count),
+      avatar: user.avatar_url,
+      name: user.name,
+      handle: user.login,
+      value: formatNumber(user.followers_count),
     }));
 
   const repoStars = repoInfo?.stargazers_count ?? 0;

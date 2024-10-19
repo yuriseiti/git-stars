@@ -15,8 +15,8 @@ import LineChart from "./components/LineChart";
 import { useRepoContext } from "../../contexts/repoContext";
 
 const Content: React.FC = () => {
-  const { repoInfo, stargazersInfo } = useRepoContext();
-  console.log("🚀 ~ stargazersInfo:", stargazersInfo)
+  const { accessToken, repoInfo, stargazersInfo } = useRepoContext();
+  console.log("🚀 ~ stargazersInfo:", stargazersInfo);
 
   const [mode, setMode] = useState<"sum" | "variation">("sum");
 
@@ -73,53 +73,61 @@ const Content: React.FC = () => {
 
   return (
     <Container>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "16px",
-          width: "60vw",
-          padding: "0 22px",
-        }}
-      >
-        <SearchBar />
-      </div>
-      {repoInfo && stargazersInfo && (
+      {accessToken ? (
         <>
           <div
-            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "16px",
+              width: "60vw",
+              padding: "0 22px",
+            }}
           >
-            <InfoCard
-              icon={<StarBorderRoundedIcon />}
-              value={repoStars.toString()}
-              label="Estrelas"
-            />
-            <InfoCard
-              icon={<PeopleOutlineRoundedIcon />}
-              value={repoFollowers.toString()}
-              label="Seguidores"
-            />
-            <InfoCard
-              icon={<UpdateRoundedIcon />}
-              value={repoUpdatedAt}
-              label="Atualizado em"
-            />
-            <OwnerCard user={repoOwner} />
+            <SearchBar />
           </div>
-          <div
-            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
-          >
-            <button onClick={changeMode}>Mudar modo</button>
-            <LineChart data={stargazersInfo} mode={mode} />
-          </div>
-          <div
-            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
-          >
-            <RankingCard title="Primeiras estrelas" users={firstStargazers} />
-            <RankingCard title="Últimas estrelas" users={lastStargazers} />
-            <RankingCard title="Mais seguidores" users={mostFollowers} />
-          </div>
+          {repoInfo && stargazersInfo && (
+            <>
+              <div
+                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+              >
+                <InfoCard
+                  icon={<StarBorderRoundedIcon />}
+                  value={repoStars.toString()}
+                  label="Estrelas"
+                />
+                <InfoCard
+                  icon={<PeopleOutlineRoundedIcon />}
+                  value={repoFollowers.toString()}
+                  label="Seguidores"
+                />
+                <InfoCard
+                  icon={<UpdateRoundedIcon />}
+                  value={repoUpdatedAt}
+                  label="Atualizado em"
+                />
+                <OwnerCard user={repoOwner} />
+              </div>
+              <div
+                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+              >
+                <button onClick={changeMode}>Mudar modo</button>
+                <LineChart data={stargazersInfo} mode={mode} />
+              </div>
+              <div
+                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+              >
+                <RankingCard title="Primeiras estrelas" users={firstStargazers} />
+                <RankingCard title="Últimas estrelas" users={lastStargazers} />
+                <RankingCard title="Mais seguidores" users={mostFollowers} />
+              </div>
+            </>
+          )}
         </>
+      ) : (
+        <p style={{ textAlign: "center" }}>
+          Faça login para visualizar as informações do repositório
+        </p>
       )}
     </Container>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { HeaderContainer } from "./styles";
 import GitStars from "../../assets/git-stars-high-resolution-logo-transparent.svg";
-import { GithubService, GithubClient } from "@gittrends-app/core";
 import { useRepoContext } from "../../contexts/repoContext";
 
 const clientId = "Ov23liOrxnWhz5RHF0ML";
@@ -61,7 +60,7 @@ const Header: React.FC = () => {
     if (accessToken) {
       localStorage.setItem("accessToken", accessToken);
       setAccessToken(accessToken);
-      
+
       // const userData = await fetch("https://api.github.com/user", {
       //   method: "GET",
       //   headers: {
@@ -70,7 +69,7 @@ const Header: React.FC = () => {
       // });
 
       const userData = await getUserData(accessToken);
-      console.log("🚀 ~ fetchAccessToken ~ userData:", userData)
+      console.log("🚀 ~ fetchAccessToken ~ userData:", userData);
     }
   };
 

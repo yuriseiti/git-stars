@@ -13,19 +13,21 @@ import { format } from "date-fns";
 
 import LineChart from "./components/LineChart";
 import { useRepoContext } from "../../contexts/repoContext";
+import { CircularProgress } from "@material-ui/core";
 
 const Content: React.FC = () => {
-  const { accessToken, repoInfo, stargazersInfo } = useRepoContext();
-  console.log("🚀 ~ stargazersInfo:", stargazersInfo);
+  const { accessToken, repoInfo, stargazersInfo, isLoading, step, setStep } =
+    useRepoContext();
 
   const [mode, setMode] = useState<"sum" | "variation">("sum");
 
-  const sortedUsers = stargazersInfo ? stargazersInfo.sort((a, b) => {
-    return (
-      new Date(a.starred_at).getTime() -
-      new Date(b.starred_at).getTime()
-    );
-  }) : [];
+  const sortedUsers = stargazersInfo
+    ? stargazersInfo.sort((a, b) => {
+        return (
+          new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime()
+        );
+      })
+    : [];
 
   const firstStargazers = sortedUsers.slice(0, 5).map((user) => ({
     avatar: user.avatar_url,
@@ -75,21 +77,41 @@ const Content: React.FC = () => {
     <Container>
       {accessToken ? (
         <>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "16px",
-              width: "60vw",
-              padding: "0 22px",
-            }}
-          >
-            <SearchBar />
-          </div>
+          {!isLoading && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "16px",
+                width: "60vw",
+                padding: "0 22px",
+              }}
+            >
+              <SearchBar />
+            </div>
+          )}
+
+          {isLoading && (
+            <>
+              <CircularProgress />
+              <p style={{ textAlign: "center" }}>
+                {isLoading === "repo"
+                  ? "Buscando informações do repositório..."
+                  : `Buscando informações dos stargazers... (${step}/${Math.ceil(
+                      repoInfo.stargazers_count / 100
+                    )})`}
+              </p>
+            </>
+          )}
+
           {repoInfo && stargazersInfo && (
             <>
               <div
-                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "16px",
+                }}
               >
                 <InfoCard
                   icon={<StarBorderRoundedIcon />}
@@ -109,15 +131,26 @@ const Content: React.FC = () => {
                 <OwnerCard user={repoOwner} />
               </div>
               <div
-                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "16px",
+                }}
               >
                 <button onClick={changeMode}>Mudar modo</button>
                 <LineChart data={stargazersInfo} mode={mode} />
               </div>
               <div
-                style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "16px",
+                }}
               >
-                <RankingCard title="Primeiras estrelas" users={firstStargazers} />
+                <RankingCard
+                  title="Primeiras estrelas"
+                  users={firstStargazers}
+                />
                 <RankingCard title="Últimas estrelas" users={lastStargazers} />
                 <RankingCard title="Mais seguidores" users={mostFollowers} />
               </div>
@@ -126,7 +159,7 @@ const Content: React.FC = () => {
         </>
       ) : (
         <p style={{ textAlign: "center" }}>
-          Faça login para visualizar as informações do repositório
+          Faça login para poder buscar as informações do repositório
         </p>
       )}
     </Container>

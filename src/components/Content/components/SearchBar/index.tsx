@@ -33,11 +33,16 @@ class CustomFactory extends BaseFragmentFactory {
 }
 
 const SearchBar: React.FC = () => {
-  const { setRepoInfo, setStargazersInfo } = useRepoContext();
+  const { setRepoInfo, setStargazersInfo, isLoading, setIsLoading, setStep } =
+    useRepoContext();
 
   const [inputValue, setInputValue] = useState("");
 
   const handleSearch = async () => {
+    setStep(1);
+    setRepoInfo(null);
+    setStargazersInfo(null);
+    setIsLoading("repo");
     const [owner, repo] = inputValue.split(" ");
 
     const accessToken = localStorage.getItem("accessToken");
@@ -49,6 +54,7 @@ const SearchBar: React.FC = () => {
     const repoInfo = await service.repository(owner, repo);
 
     setRepoInfo(repoInfo);
+    setIsLoading("stargazers");
 
     let stargazersInfo = [];
 
@@ -56,6 +62,7 @@ const SearchBar: React.FC = () => {
       repository: repoInfo!.id,
       factory: new CustomFactory(),
     })) {
+      setStep((prev) => prev + 1);
       for (const stargazer of res.data) {
         stargazersInfo.push({
           starred_at: stargazer.starred_at,
@@ -68,6 +75,7 @@ const SearchBar: React.FC = () => {
 
       if (!res.metadata.has_more) {
         setStargazersInfo(stargazersInfo);
+        setIsLoading(false);
         break;
       }
     }

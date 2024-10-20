@@ -97,9 +97,9 @@ const Content: React.FC = () => {
               <p style={{ textAlign: "center" }}>
                 {isLoading === "repo"
                   ? "Buscando informações do repositório..."
-                  : `Buscando informações dos stargazers... (${step}/${Math.ceil(
-                      repoInfo.stargazers_count / 100
-                    )})`}
+                  : `Buscando informações dos stargazers... (${step}/${
+                      Math.ceil(repoInfo.stargazers_count / 100) || 1
+                    })`}
               </p>
             </>
           )}

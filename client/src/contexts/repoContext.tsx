@@ -10,7 +10,7 @@ interface RepoContextType {
   setStargazersInfo: (info: any | null) => void;
   setAccessToken: (token: string | null) => void;
   setIsLoading: (loading: boolean | string) => void;
-  setStep: (step: number) => void;
+  setStep: (step: number | ((prev: number) => number)) => void;
 }
 
 const RepoContext = createContext<RepoContextType | undefined>(undefined);

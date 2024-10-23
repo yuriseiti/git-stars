@@ -16,27 +16,35 @@ import { useRepoContext } from "../../contexts/repoContext";
 import { CircularProgress } from "@material-ui/core";
 
 const Content: React.FC = () => {
-  const { accessToken, repoInfo, stargazersInfo, isLoading, step, setStep } =
+  const { accessToken, repoInfo, stargazersInfo, isLoading, step } =
     useRepoContext();
 
   const [mode, setMode] = useState<"sum" | "variation">("sum");
 
   const sortedUsers = stargazersInfo
-    ? stargazersInfo.sort((a, b) => {
+    ? stargazersInfo.sort((a: User, b: User) => {
         return (
           new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime()
         );
       })
     : [];
 
-  const firstStargazers = sortedUsers.slice(0, 5).map((user) => ({
+  interface User {
+    avatar_url: string;
+    name: string;
+    login: string;
+    starred_at: string;
+    followers_count: number;
+  }
+
+  const firstStargazers = sortedUsers.slice(0, 5).map((user: User) => ({
     avatar: user.avatar_url,
     name: user.name,
     handle: user.login,
     value: format(new Date(user.starred_at), "dd/MM/yyyy"),
   }));
 
-  const lastStargazers = sortedUsers.slice(-5).map((user) => ({
+  const lastStargazers = sortedUsers.slice(-5).map((user: User) => ({
     avatar: user.avatar_url,
     name: user.name,
     handle: user.login,
@@ -48,9 +56,9 @@ const Content: React.FC = () => {
   };
 
   const mostFollowers = sortedUsers
-    .sort((a, b) => b.followers_count - a.followers_count)
+    .sort((a: User, b: User) => b.followers_count - a.followers_count)
     .slice(0, 5)
-    .map((user) => ({
+    .map((user: User) => ({
       avatar: user.avatar_url,
       name: user.name,
       handle: user.login,

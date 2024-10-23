@@ -26,20 +26,20 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
     // Group data by day and count stars
     const groupedData = d3.rollup(
       stargazerData,
-      (v) => v.length,
-      (d) => d3.timeDay(d.starredAt)
+      (v: any[]) => v.length,
+      (d: { starredAt: Date }) => d3.timeDay(d.starredAt)
     );
 
     // Convert grouped data to arrays
-    const dates = Array.from(groupedData.keys()).sort(
-      (a, b) => a.getTime() - b.getTime()
+    const dates = Array.from(groupedData.keys() as IterableIterator<Date>).sort(
+      (a: Date, b: Date) => a.getTime() - b.getTime()
     );
-    const starCounts = Array.from(groupedData.values());
+    const starCounts = Array.from(groupedData.values()) as number[];
 
     let lineValues: number[] = [];
 
     if (mode === "sum") {
-      lineValues = starCounts.reduce((acc, count, index) => {
+      lineValues = starCounts.reduce((acc: number[], count, index) => {
         const previous = acc[index - 1] || 0; // Previous cumulative count
         acc.push(previous + count); // Add current count to previous
         return acc;
@@ -105,9 +105,9 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
 
     // Draw the line
     const line = d3
-      .line()
-      .x((d, i) => x(dates[i]))
-      .y((d) => y(d));
+      .line<number>()
+      .x((d: number, i: number) => x(dates[i]) as number)
+      .y((d: number) => y(d) as number);
 
     g.append("path")
       .datum(lineValues)
@@ -125,13 +125,15 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
     g.append("g").attr("class", "y-axis").call(d3.axisLeft(y));
 
     // Define zoom behavior
-    const zoom = d3
-      .zoom()
+    interface ZoomEvent extends d3.D3ZoomEvent<SVGSVGElement, unknown> {}
+
+    const zoom: d3.ZoomBehavior<SVGSVGElement, unknown> = d3
+      .zoom<SVGSVGElement, unknown>()
       .scaleExtent([1, 10]) // Set zoom scale limits
-      .on("zoom", (event) => {
-        g.attr("transform", event.transform); // Apply the transform to the group
-        // g.select(".x-axis").call(d3.axisBottom(x).scale(event.transform.rescaleX(x))); // Update x-axis
-        // g.select(".y-axis").call(d3.axisLeft(y).scale(event.transform.rescaleY(y))); // Update y-axis
+      .on("zoom", (event: ZoomEvent) => {
+      g.attr("transform", (event as any).transform); // Apply the transform to the group
+      // g.select(".x-axis").call(d3.axisBottom(x).scale(event.transform.rescaleX(x))); // Update x-axis
+      // g.select(".y-axis").call(d3.axisLeft(y).scale(event.transform.rescaleY(y))); // Update y-axis
       });
 
     // Call zoom behavior on the svg element

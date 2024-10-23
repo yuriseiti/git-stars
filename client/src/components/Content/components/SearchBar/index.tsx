@@ -33,7 +33,7 @@ class CustomFactory extends BaseFragmentFactory {
 }
 
 const SearchBar: React.FC = () => {
-  const { setRepoInfo, setStargazersInfo, isLoading, setIsLoading, setStep } =
+  const { setRepoInfo, setStargazersInfo, setIsLoading, setStep } =
     useRepoContext();
 
   const [inputValue, setInputValue] = useState("");
@@ -56,20 +56,26 @@ const SearchBar: React.FC = () => {
     setRepoInfo(repoInfo);
     setIsLoading("stargazers");
 
-    let stargazersInfo = [];
+    let stargazersInfo: Array<{
+      starred_at: Date;
+      avatar_url: string;
+      name: string | undefined;
+      login: string;
+      followers_count: number | undefined;
+    }> = [];
 
     for await (const res of service.stargazers({
       repository: repoInfo!.id,
       factory: new CustomFactory(),
     })) {
-      setStep((prev) => prev + 1);
+      setStep((prev: number) => prev + 1);
       for (const stargazer of res.data) {
         stargazersInfo.push({
           starred_at: stargazer.starred_at,
-          avatar_url: stargazer.user.avatar_url,
-          name: stargazer.user.name,
-          login: stargazer.user.login,
-          followers_count: stargazer.user.followers_count,
+          avatar_url: typeof stargazer.user === "string" ? "" : stargazer.user.avatar_url,
+          name: typeof stargazer.user === "string" || !('name' in stargazer.user) ? "" : stargazer.user.name,
+          login: typeof stargazer.user === "string" ? "" : stargazer.user.login,
+          followers_count: typeof stargazer.user === "string" || !('followers_count' in stargazer.user) ? 0 : stargazer.user.followers_count,
         });
       }
 

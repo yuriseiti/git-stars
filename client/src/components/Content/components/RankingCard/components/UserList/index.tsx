@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid2 } from "@mui/material"; 
+import Grid from "@mui/material/Grid"; 
 import { Paper, Typography } from "@mui/material";
 import { ListContainer } from "./styles";
 
@@ -23,7 +23,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
   return (
     <ListContainer>
       {users.map((user, index) => (
-        <Grid2 item xs={12} key={index}>
+        <Grid item xs={12} key={index}>
           <Paper
             elevation={0}
             style={{ padding: "16px", display: "flex", alignItems: "center" }}
@@ -48,7 +48,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             </div>
             <Typography variant="body1">{user.value}</Typography>
           </Paper>
-        </Grid2>
+        </Grid>
       ))}
     </ListContainer>
   );

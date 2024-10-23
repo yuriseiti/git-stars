@@ -4,7 +4,7 @@ import GitStars from "../../assets/git-stars-high-resolution-logo-transparent.sv
 import { useRepoContext } from "../../contexts/repoContext";
 
 const clientId = "Ov23liOrxnWhz5RHF0ML";
-const redirectUri = "http://localhost:5173";
+const redirectUri = "https://git-stars-3cyc.vercel.app/";
 
 const Header: React.FC = () => {
   const { accessToken, setAccessToken } = useRepoContext();

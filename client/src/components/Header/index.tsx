@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   }, []);
 
   const getUserData = async (accessToken: string) => {
-    const response = await fetch("http://localhost:3000/getUserData", {
+    const response = await fetch("https://git-stars-seven.vercel.app/getUserData", {
       method: "get",
       headers: {
         Authorization: `token ${accessToken}`,
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
 
   const fetchAccessToken = async (code: string) => {
     const response = await fetch(
-      `http://localhost:3000/getAccessToken?code=` + code,
+      `https://git-stars-seven.vercel.app/getAccessToken?code=` + code,
       {
         method: "get",
       }

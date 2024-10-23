@@ -18,6 +18,10 @@ if (!clientId || !clientSecret) {
   throw new Error("Missing CLIENT_ID or CLIENT_SECRET in environment variables");
 }
 
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
+
 app.get("/getAccessToken", async (req, res) => {
   try {
     const { code } = req.query;

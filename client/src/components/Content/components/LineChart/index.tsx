@@ -137,7 +137,9 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
       });
 
     // Call zoom behavior on the svg element
-    svg.call(zoom);
+    if (svgRef.current) {
+      svg.call(zoom as any);
+    }
   }, [data, mode]);
 
   return (

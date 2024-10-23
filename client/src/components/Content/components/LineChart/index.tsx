@@ -50,6 +50,27 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
       lineValues = starCounts;
     }
 
+    const desiredCount = 100; // Target number of downsampled points
+    const interval = Math.floor(dates.length / desiredCount); // Calculate the interval
+
+    const downsampledDates = [];
+    const downsampledCounts = [];
+
+    // Loop through the data in chunks defined by the interval
+    for (let i = 0; i < lineValues.length; i += interval) {
+      // Get the chunk of starCounts
+      const chunkCounts = lineValues.slice(i, i + interval);
+      // Calculate the average for this chunk
+      const averageCount =
+        chunkCounts.reduce((sum, value) => sum + value, 0) / chunkCounts.length;
+
+      // Push the average count to downsampledCounts
+      downsampledCounts.push(averageCount);
+
+      // Push the corresponding date (the start of the interval)
+      downsampledDates.push(dates[i]);
+    }
+
     // Set up the SVG canvas dimensions
     const margin = { top: 20, right: 30, bottom: 30, left: 40 };
     const width = 800 - margin.left - margin.right;
@@ -61,18 +82,32 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
       .attr("height", height + margin.top + margin.bottom);
 
     // Create a group for the chart elements
-    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const g = svg
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Set up the scales
-    const x = d3.scaleTime().range([0, width]).domain(d3.extent(dates) as [Date, Date]);
-    
+    const x = d3
+      .scaleTime()
+      .range([0, width])
+      .domain(d3.extent(dates) as [Date, Date]);
+
     const y =
       mode === "sum"
-        ? d3.scaleLinear().range([height, 0]).domain([0, d3.max(lineValues) as number])
-        : d3.scaleLog().range([height, 0]).domain([1, d3.max(lineValues) as number]);
+        ? d3
+            .scaleLinear()
+            .range([height, 0])
+            .domain([0, d3.max(lineValues) as number])
+        : d3
+            .scaleLog()
+            .range([height, 0])
+            .domain([1, d3.max(lineValues) as number]);
 
     // Draw the line
-    const line = d3.line().x((d, i) => x(dates[i])).y((d) => y(d));
+    const line = d3
+      .line()
+      .x((d, i) => x(dates[i]))
+      .y((d) => y(d));
 
     g.append("path")
       .datum(lineValues)
@@ -82,12 +117,16 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
       .attr("d", line);
 
     // Draw the axes
-    g.append("g").attr("class", "x-axis").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x));
-    
+    g.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x));
+
     g.append("g").attr("class", "y-axis").call(d3.axisLeft(y));
 
     // Define zoom behavior
-    const zoom = d3.zoom()
+    const zoom = d3
+      .zoom()
       .scaleExtent([1, 10]) // Set zoom scale limits
       .on("zoom", (event) => {
         g.attr("transform", event.transform); // Apply the transform to the group
@@ -95,9 +134,8 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
         // g.select(".y-axis").call(d3.axisLeft(y).scale(event.transform.rescaleY(y))); // Update y-axis
       });
 
-   // Call zoom behavior on the svg element
-   svg.call(zoom);
-    
+    // Call zoom behavior on the svg element
+    svg.call(zoom);
   }, [data, mode]);
 
   return (

@@ -106,7 +106,7 @@ const LineChart: React.FC<LineChartProps> = ({ data, mode }) => {
     // Draw the line
     const line = d3
       .line<number>()
-      .x((d: number, i: number) => x(dates[i]) as number)
+      .x((i: number) => x(dates[i]) as number)
       .y((d: number) => y(d) as number);
 
     g.append("path")

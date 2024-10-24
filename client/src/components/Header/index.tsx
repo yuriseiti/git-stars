@@ -3,8 +3,17 @@ import { HeaderContainer } from "./styles";
 import GitStars from "../../assets/git-stars-high-resolution-logo-transparent.svg";
 import { useRepoContext } from "../../contexts/repoContext";
 
-const clientId = "Ov23liOrxnWhz5RHF0ML";
-const redirectUri = "https://git-stars-3cyc.vercel.app/";
+const env = import.meta.env.VITE_ENV;
+
+const baseURL = env === "DEV" ? "http://localhost:3000" : "https://git-stars-seven.vercel.app";
+
+const clientId =
+  env === "DEV" ? "Ov23lihCnVHMxraVFbqf" : "Ov23liOrxnWhz5RHF0ML";
+
+const redirectUri =
+  env === "DEV"
+    ? "http://localhost:5173/"
+    : "https://git-stars-3cyc.vercel.app/";
 
 const Header: React.FC = () => {
   const { accessToken, setAccessToken } = useRepoContext();
@@ -36,19 +45,22 @@ const Header: React.FC = () => {
   }, []);
 
   const getUserData = async (accessToken: string) => {
-    const response = await fetch("https://git-stars-seven.vercel.app/getUserData", {
-      method: "get",
-      headers: {
-        Authorization: `token ${accessToken}`,
-      },
-    });
+    const response = await fetch(
+      `${baseURL}/getUserData`,
+      {
+        method: "get",
+        headers: {
+          Authorization: `token ${accessToken}`,
+        },
+      }
+    );
 
     return await response.json();
   };
 
   const fetchAccessToken = async (code: string) => {
     const response = await fetch(
-      `https://git-stars-seven.vercel.app/getAccessToken?code=` + code,
+      `${baseURL}/getAccessToken?code=${code}`,
       {
         method: "get",
       }

@@ -43,7 +43,7 @@ const SearchBar: React.FC = () => {
     setRepoInfo(null);
     setStargazersInfo(null);
     setIsLoading("repo");
-    const [owner, repo] = inputValue.split(" ");
+    const [owner, repo] = inputValue.split("/");
 
     const accessToken = localStorage.getItem("accessToken");
 

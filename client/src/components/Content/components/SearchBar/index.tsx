@@ -38,25 +38,25 @@ const SearchBar: React.FC = () => {
 
   const [inputValue, setInputValue] = useState("");
   const [isFetching, setIsFetching] = useState(false);
-  const [inputChanged, setInputChanged] = useState(false);
 
   const isPausedRef = useRef(false);
+  const inputChangedRef = useRef(false);
 
   const handleSearch = async () => {
     if (!inputValue) {
       return;
     }
 
-    if(!inputChanged && !isFetching) {
+    if(!inputChangedRef.current && !isFetching) {
       return;
     }
     
-    if (!inputChanged && isFetching) {
+    if (!inputChangedRef.current && isFetching) {
       isPausedRef.current = !isPausedRef.current;
       return;
     }
 
-    setInputChanged(false);
+    inputChangedRef.current = false;
     setStep(1);
     setRepoInfo(null);
     setStargazersInfo(null);
@@ -104,6 +104,11 @@ const SearchBar: React.FC = () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
       
+      if (inputChangedRef.current) {
+        setIsLoading(false);
+        break;
+      }
+      
       if (!res.metadata.has_more) {
         setIsLoading(false);
         setIsFetching(false);
@@ -120,7 +125,7 @@ const SearchBar: React.FC = () => {
         variant="outlined"
         placeholder="Buscar por um repositório"
         value={inputValue}
-        onChange={(e) => {setInputValue(e.target.value); setInputChanged(true);}}
+        onChange={(e) => {setInputValue(e.target.value); inputChangedRef.current = true;}}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -135,7 +140,7 @@ const SearchBar: React.FC = () => {
         color="primary"
         onClick={handleSearch}
       >
-        {inputChanged ? "Buscar" : isPausedRef.current ? "Continuar" : "Pausar"}
+        {inputChangedRef.current ? "Buscar" : isPausedRef.current ? "Continuar" : "Pausar"}
       </Button>
     </Container>
   );

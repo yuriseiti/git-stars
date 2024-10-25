@@ -88,15 +88,15 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     const date = new Date(timestamp);
     switch (group) {
       case "day":
-        return format(date, 'P');
+        return format(date, 'dd/MM/yyyy');
       case "week":
-        return `Semana de ${format(date, 'P')}`;
+        return `Semana de ${format(date, 'dd/MM/yyyy')}`;
       case "month":
         return format(date, 'MMM yyyy');
       case "year":
         return format(date, 'yyyy');
       default:
-        return format(date, 'P');
+        return format(date, 'dd/MM/yyyy');
     }
   };
 

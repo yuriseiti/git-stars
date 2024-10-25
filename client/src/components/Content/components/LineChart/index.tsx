@@ -118,7 +118,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
   };
 
   const zoom = () => {
-    if (!refAreaLeft || !refAreaRight) {
+    if (!refAreaLeft || !refAreaRight || refAreaLeft === refAreaRight) {
       setRefAreaLeft(null);
       setRefAreaRight(null);
       return;

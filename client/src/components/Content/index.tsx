@@ -79,19 +79,17 @@ const Content: React.FC = () => {
     <Container>
       {accessToken ? (
         <>
-          {!isLoading && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "16px",
-                width: "60vw",
-                padding: "0 22px",
-              }}
-            >
-              <SearchBar />
-            </div>
-          )}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "16px",
+              width: "60vw",
+              padding: "0 22px",
+            }}
+          >
+            <SearchBar />
+          </div>
 
           {isLoading && (
             <>
@@ -106,32 +104,35 @@ const Content: React.FC = () => {
             </>
           )}
 
-          {repoInfo && stargazersInfo && (
+          {repoInfo && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "16px",
+              }}
+            >
+              <InfoCard
+                icon={<StarBorderRoundedIcon />}
+                value={repoStars.toString()}
+                label="Estrelas"
+              />
+              <InfoCard
+                icon={<PeopleOutlineRoundedIcon />}
+                value={repoFollowers.toString()}
+                label="Seguidores"
+              />
+              <InfoCard
+                icon={<UpdateRoundedIcon />}
+                value={repoUpdatedAt}
+                label="Atualizado em"
+              />
+              <OwnerCard user={repoOwner} />
+            </div>
+          )}
+          
+          {stargazersInfo && (
             <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "16px",
-                }}
-              >
-                <InfoCard
-                  icon={<StarBorderRoundedIcon />}
-                  value={repoStars.toString()}
-                  label="Estrelas"
-                />
-                <InfoCard
-                  icon={<PeopleOutlineRoundedIcon />}
-                  value={repoFollowers.toString()}
-                  label="Seguidores"
-                />
-                <InfoCard
-                  icon={<UpdateRoundedIcon />}
-                  value={repoUpdatedAt}
-                  label="Atualizado em"
-                />
-                <OwnerCard user={repoOwner} />
-              </div>
               <div
                 style={{
                   display: "flex",

@@ -69,18 +69,18 @@ const SearchBar: React.FC = () => {
       factory: new CustomFactory(),
     })) {
       setStep((prev: number) => prev + 1);
-      for (const stargazer of res.data) {
-        stargazersInfo.push({
-          starred_at: stargazer.starred_at,
-          avatar_url: typeof stargazer.user === "string" ? "" : stargazer.user.avatar_url,
-          name: typeof stargazer.user === "string" || !('name' in stargazer.user) ? "" : stargazer.user.name,
-          login: typeof stargazer.user === "string" ? "" : stargazer.user.login,
-          followers_count: typeof stargazer.user === "string" || !('followers_count' in stargazer.user) ? 0 : stargazer.user.followers_count,
-        });
-      }
-
+      const newStargazers = res.data.map((stargazer) => ({
+        starred_at: stargazer.starred_at,
+        avatar_url: typeof stargazer.user === "string" ? "" : stargazer.user.avatar_url,
+        name: typeof stargazer.user === "string" || !('name' in stargazer.user) ? "" : stargazer.user.name,
+        login: typeof stargazer.user === "string" ? "" : stargazer.user.login,
+        followers_count: typeof stargazer.user === "string" || !('followers_count' in stargazer.user) ? 0 : stargazer.user.followers_count,
+      }));
+  
+      stargazersInfo = [...stargazersInfo, ...newStargazers];
+      setStargazersInfo(stargazersInfo);
+      
       if (!res.metadata.has_more) {
-        setStargazersInfo(stargazersInfo);
         setIsLoading(false);
         break;
       }

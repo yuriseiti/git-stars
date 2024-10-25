@@ -48,7 +48,6 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
           key = date.toISOString().split("T")[0];
           break;
         case "week":
-          // Get the Monday of the week
           const day = date.getDay();
           const diff = date.getDate() - day + (day === 0 ? -6 : 1);
           const monday = new Date(date.setDate(diff));
@@ -188,6 +187,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
               tickFormatter={formatXAxis}
               type="number"
               tickCount={10}
+              padding={{ left: 20, right: 20 }}
             />
             <YAxis
               allowDataOverflow={true}
@@ -201,11 +201,10 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
             />
             <Line
               type="monotone"
+              animationDuration={500}
               dataKey={metric}
               stroke="#8884d8"
               strokeWidth={2}
-              dot={{ r: 4 }}
-              activeDot={{ r: 6 }}
             />
             {refAreaLeft && refAreaRight && (
               <ReferenceArea

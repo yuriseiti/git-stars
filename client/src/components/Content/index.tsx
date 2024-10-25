@@ -19,8 +19,6 @@ const Content: React.FC = () => {
   const { accessToken, repoInfo, stargazersInfo, isLoading, step } =
     useRepoContext();
 
-  const [mode, setMode] = useState<"sum" | "variation">("sum");
-
   const sortedUsers = stargazersInfo
     ? stargazersInfo.sort((a: User, b: User) => {
         return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
@@ -13,6 +13,7 @@ import {
 } from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
 import { Class } from "type-fest";
+import { set } from "date-fns";
 
 class CustomFactory extends BaseFragmentFactory {
   create<T extends Fragment>(Ref: Class<T>): T {
@@ -37,8 +38,26 @@ const SearchBar: React.FC = () => {
     useRepoContext();
 
   const [inputValue, setInputValue] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+  const [inputChanged, setInputChanged] = useState(false);
+
+  const isPausedRef = useRef(false);
 
   const handleSearch = async () => {
+    if (!inputValue) {
+      return;
+    }
+
+    if(!inputChanged && !isFetching) {
+      return;
+    }
+    
+    if (!inputChanged && isFetching) {
+      isPausedRef.current = !isPausedRef.current;
+      return;
+    }
+
+    setInputChanged(false);
     setStep(1);
     setRepoInfo(null);
     setStargazersInfo(null);
@@ -55,6 +74,8 @@ const SearchBar: React.FC = () => {
 
     setRepoInfo(repoInfo);
     setIsLoading("stargazers");
+    setIsFetching(true);
+    isPausedRef.current = false;
 
     let stargazersInfo: Array<{
       starred_at: Date;
@@ -79,9 +100,15 @@ const SearchBar: React.FC = () => {
   
       stargazersInfo = [...stargazersInfo, ...newStargazers];
       setStargazersInfo(stargazersInfo);
+
+      while (isPausedRef.current) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
       
       if (!res.metadata.has_more) {
         setIsLoading(false);
+        setIsFetching(false);
+        isPausedRef.current = false;
         break;
       }
     }
@@ -94,7 +121,7 @@ const SearchBar: React.FC = () => {
         variant="outlined"
         placeholder="Buscar por um repositório"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e) => {setInputValue(e.target.value); setInputChanged(true);}}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -109,7 +136,7 @@ const SearchBar: React.FC = () => {
         color="primary"
         onClick={handleSearch}
       >
-        BUSCAR
+        {inputChanged ? "Buscar" : isPausedRef.current ? "Continuar" : "Pausar"}
       </Button>
     </Container>
   );

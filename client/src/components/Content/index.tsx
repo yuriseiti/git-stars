@@ -9,7 +9,7 @@ import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import UpdateRoundedIcon from "@mui/icons-material/UpdateRounded";
 import PeopleOutlineRoundedIcon from "@mui/icons-material/PeopleOutlineRounded";
 
-import { format } from "date-fns";
+import { parseISO, format } from "date-fns";
 
 import LineChart from "./components/LineChart";
 import { useRepoContext } from "../../contexts/repoContext";
@@ -130,7 +130,7 @@ const Content: React.FC = () => {
               <OwnerCard user={repoOwner} />
             </div>
           )}
-          
+
           {stargazersInfo && (
             <>
               <div

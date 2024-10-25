@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { Container } from "./styles";
+import { parseISO, format, startOfWeek, startOfMonth, startOfYear } from 'date-fns';
 
 interface Stargazer {
   starred_at: Date;
@@ -40,30 +41,24 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     const counts: { [key: string]: number } = {};
 
     data.forEach((item) => {
-      const date = new Date(item.starred_at);
+      const date = parseISO(item.starred_at.toISOString());
       let key: string;
 
       switch (grouping) {
         case "day":
-          key = date.toISOString().split("T")[0];
+          key = format(date, 'yyyy-MM-dd');
           break;
         case "week":
-          const day = date.getDay();
-          const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-          const monday = new Date(date.setDate(diff));
-          key = monday.toISOString().split("T")[0];
+          key = format(startOfWeek(date), 'yyyy-MM-dd');
           break;
         case "month":
-          key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
-            2,
-            "0"
-          )}`;
+          key = format(startOfMonth(date), 'yyyy-MM-dd');
           break;
         case "year":
-          key = `${date.getFullYear()}`;
+          key = format(startOfYear(date), 'yyyy-MM-dd');
           break;
         default:
-          key = date.toISOString().split("T")[0];
+          key = format(date, 'yyyy-MM-dd');
       }
 
       counts[key] = (counts[key] || 0) + 1;
@@ -74,14 +69,14 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
         date,
         count,
       }))
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      .sort((a, b) => parseISO(a.date).getTime() - parseISO(b.date).getTime());
   };
 
   const processedData = useMemo(() => {
     const groupedData = groupData(rawData, group);
 
     return groupedData.map((item, index) => ({
-      date: new Date(item.date).getTime(),
+      date: parseISO(item.date).getTime(),
       totalStargazers: groupedData
         .slice(0, index + 1)
         .reduce((sum, current) => sum + current.count, 0),
@@ -93,18 +88,15 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     const date = new Date(timestamp);
     switch (group) {
       case "day":
-        return date.toLocaleDateString();
+        return format(date, 'P');
       case "week":
-        return `Semana de ${date.toLocaleDateString()}`;
+        return `Semana de ${format(date, 'P')}`;
       case "month":
-        return date.toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "short",
-        });
+        return format(date, 'MMM yyyy');
       case "year":
-        return date.getFullYear().toString();
+        return format(date, 'yyyy');
       default:
-        return date.toLocaleDateString();
+        return format(date, 'P');
     }
   };
 

@@ -142,11 +142,11 @@ const Content: React.FC = () => {
                 style={{
                   display: "flex",
                   justifyContent: "center",
+                  width: "100%",
                   gap: "16px",
                 }}
               >
-                <button onClick={changeMode}>Mudar modo</button>
-                <LineChart data={stargazersInfo} mode={mode} />
+                <LineChart data={stargazersInfo} />
               </div>
               <div
                 style={{

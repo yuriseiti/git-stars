@@ -13,7 +13,6 @@ import {
 } from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
 import { Class } from "type-fest";
-import { set } from "date-fns";
 
 class CustomFactory extends BaseFragmentFactory {
   create<T extends Fragment>(Ref: Class<T>): T {

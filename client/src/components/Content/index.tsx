@@ -77,10 +77,6 @@ const Content: React.FC = () => {
     handle: repoInfo?.owner?.login,
   };
 
-  const changeMode = () => {
-    setMode(mode === "sum" ? "variation" : "sum");
-  };
-
   return (
     <Container>
       {accessToken ? (

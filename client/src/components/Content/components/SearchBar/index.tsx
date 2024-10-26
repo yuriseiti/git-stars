@@ -65,6 +65,11 @@ const SearchBar: React.FC = () => {
       setRepoInfo(repoInfo);
       if (repoInfo) {
         await fetchStargazers(service, repoInfo.id);
+      } else {
+        setIsLoading(false);
+        setIsError("Repositório não encontrado");
+        isPausedRef.current = false;
+        inputChangedRef.current = true;
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -79,7 +84,7 @@ const SearchBar: React.FC = () => {
     }
 
     if (input.split("/").length !== 2) {
-      setIsError("Formato inválido");
+      setIsError("Formato inválido. Utilize owner/repo");
       return false;
     }
 

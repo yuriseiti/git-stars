@@ -36,42 +36,90 @@ const SearchBar: React.FC = () => {
   const { setRepoInfo, setStargazersInfo, setIsLoading, setStep } =
     useRepoContext();
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("jellyfin/jellyfin-kodi");
   const [isFetching, setIsFetching] = useState(false);
+  const [isError, setIsError] = useState<string | boolean>(false);
 
   const isPausedRef = useRef(false);
-  const inputChangedRef = useRef(false);
+  const inputChangedRef = useRef(true);
 
   const handleSearch = async () => {
-    if (!inputValue) {
+    if (!validateInput(inputValue)) return;
+
+    setIsError(false);
+
+    if (!shouldProceed()) return;
+
+    resetState();
+    const [owner, repo] = inputValue.split("/");
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      setIsError("Access token is missing");
+      setIsLoading(false);
       return;
+    }
+    const service = createGithubService(accessToken);
+
+    try {
+      const repoInfo = await fetchRepoInfo(service, owner, repo);
+      setRepoInfo(repoInfo);
+      if (repoInfo) {
+        await fetchStargazers(service, repoInfo.id);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
+  };
+
+  const validateInput = (input: string) => {
+    if (!input) {
+      setIsError("Campo obrigatório");
+      return false;
     }
 
-    if(!inputChangedRef.current && !isFetching) {
-      return;
+    if (input.split("/").length !== 2) {
+      setIsError("Formato inválido");
+      return false;
     }
-    
+
+    return true;
+  };
+
+  const shouldProceed = () => {
+    if (!inputChangedRef.current && !isFetching) return false;
+
     if (!inputChangedRef.current && isFetching) {
       isPausedRef.current = !isPausedRef.current;
-      return;
+      return false;
     }
 
+    return true;
+  };
+
+  const resetState = () => {
     inputChangedRef.current = false;
     setStep(1);
     setRepoInfo(null);
     setStargazersInfo(null);
     setIsLoading("repo");
-    const [owner, repo] = inputValue.split("/");
+  };
 
-    const accessToken = localStorage.getItem("accessToken");
-
-    const service = new GithubService(
-      new GithubClient("https://api.github.com", { apiToken: accessToken! })
+  const createGithubService = (accessToken: string) => {
+    return new GithubService(
+      new GithubClient("https://api.github.com", { apiToken: accessToken })
     );
+  };
 
-    const repoInfo = await service.repository(owner, repo);
+  const fetchRepoInfo = async (
+    service: GithubService,
+    owner: string,
+    repo: string
+  ) => {
+    return await service.repository(owner, repo);
+  };
 
-    setRepoInfo(repoInfo);
+  const fetchStargazers = async (service: GithubService, repoId: string) => {
     setIsLoading("stargazers");
     setIsFetching(true);
     isPausedRef.current = false;
@@ -85,37 +133,69 @@ const SearchBar: React.FC = () => {
     }> = [];
 
     for await (const res of service.stargazers({
-      repository: repoInfo!.id,
+      repository: repoId,
       factory: new CustomFactory(),
     })) {
-      setStep((prev: number) => prev + 1);
-      const newStargazers = res.data.map((stargazer) => ({
-        starred_at: stargazer.starred_at,
-        avatar_url: typeof stargazer.user === "string" ? "" : stargazer.user.avatar_url,
-        name: typeof stargazer.user === "string" || !('name' in stargazer.user) ? "" : stargazer.user.name,
-        login: typeof stargazer.user === "string" ? "" : stargazer.user.login,
-        followers_count: typeof stargazer.user === "string" || !('followers_count' in stargazer.user) ? 0 : stargazer.user.followers_count,
-      }));
-  
-      stargazersInfo = [...stargazersInfo, ...newStargazers];
+      setStep((prev) => prev + 1);
+      stargazersInfo = [...stargazersInfo, ...processStargazers(res.data)];
       setStargazersInfo(stargazersInfo);
 
-      while (isPausedRef.current) {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-      
+      await handlePause();
+
       if (inputChangedRef.current) {
         setIsLoading(false);
         break;
       }
-      
+
       if (!res.metadata.has_more) {
-        setIsLoading(false);
-        setIsFetching(false);
-        isPausedRef.current = false;
+        finalizeFetching();
         break;
       }
     }
+  };
+
+  const processStargazers = (
+    data: Array<{
+      starred_at: Date;
+      user:
+        | string
+        | {
+            avatar_url: string;
+            name?: string;
+            login: string;
+            followers_count?: number;
+          };
+    }>
+  ) => {
+    return data.map((stargazer) => {
+      const user = typeof stargazer.user === "string" ? null : stargazer.user;
+      return {
+        starred_at: stargazer.starred_at,
+        avatar_url: user?.avatar_url ?? "",
+        name: user?.name ?? "",
+        login: user?.login ?? "",
+        followers_count: user?.followers_count ?? 0,
+      };
+    });
+  };
+
+  const handlePause = async () => {
+    while (isPausedRef.current) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  };
+
+  const finalizeFetching = () => {
+    setIsLoading(false);
+    setIsFetching(false);
+    isPausedRef.current = false;
+    inputChangedRef.current = true;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    inputChangedRef.current = true;
   };
 
   return (
@@ -125,7 +205,9 @@ const SearchBar: React.FC = () => {
         variant="outlined"
         placeholder="Buscar por um repositório"
         value={inputValue}
-        onChange={(e) => {setInputValue(e.target.value); inputChangedRef.current = true;}}
+        error={isError ? true : false}
+        helperText={isError}
+        onChange={handleInputChange}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -140,7 +222,11 @@ const SearchBar: React.FC = () => {
         color="primary"
         onClick={handleSearch}
       >
-        {inputChangedRef.current ? "Buscar" : isPausedRef.current ? "Continuar" : "Pausar"}
+        {inputChangedRef.current
+          ? "Buscar"
+          : isPausedRef.current
+          ? "Continuar"
+          : "Pausar"}
       </Button>
     </Container>
   );

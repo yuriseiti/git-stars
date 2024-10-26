@@ -9,8 +9,25 @@ import {
   ReferenceArea,
   ResponsiveContainer,
 } from "recharts";
+import {
+  Select,
+  MenuItem,
+  Button,
+  FormControl,
+  InputLabel,
+  Stack,
+} from "@mui/material";
+import {
+  parseISO,
+  format,
+  startOfWeek,
+  startOfMonth,
+  startOfYear,
+} from "date-fns";
 import { Container } from "./styles";
-import { parseISO, format, startOfWeek, startOfMonth, startOfYear } from 'date-fns';
+
+type GroupingType = "day" | "week" | "month" | "year";
+type ModeType = "sum" | "variation";
 
 interface Stargazer {
   starred_at: Date;
@@ -20,9 +37,47 @@ interface Stargazer {
   followers_count: number;
 }
 
+interface ChartData {
+  date: number;
+  totalStargazers: number;
+  newStargazers: number;
+}
+
 interface LineChartProps {
   data: Stargazer[];
 }
+
+const GROUP_FORMAT_MAP: Record<GroupingType, (date: Date) => string> = {
+  day: (date) => format(date, "dd/MM/yyyy"),
+  week: (date) => `Semana de ${format(date, "dd/MM/yyyy")}`,
+  month: (date) => format(date, "MMM yyyy"),
+  year: (date) => format(date, "yyyy"),
+};
+
+const MODE_LABELS: Record<ModeType, string> = {
+  sum: "Total de Stargazers",
+  variation: "Novos Stargazers",
+};
+
+const getDateKey = (date: Date, grouping: GroupingType): string => {
+  const dateMap = {
+    day: date,
+    week: startOfWeek(date),
+    month: startOfMonth(date),
+    year: startOfYear(date),
+  };
+  return format(dateMap[grouping], "yyyy-MM-dd");
+};
+
+const calculateAxisDomain = (
+  data: ChartData[],
+  metric: keyof ChartData
+): [number, number] => {
+  const values = data.map((d) => d[metric] as number);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return [Math.floor(min - 1), Math.ceil(max + 1)];
+};
 
 const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
   const [refAreaLeft, setRefAreaLeft] = useState<string | null>(null);
@@ -31,112 +86,59 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
   const [right, setRight] = useState<number | null>(null);
   const [top, setTop] = useState<number | null>(null);
   const [bottom, setBottom] = useState<number | null>(null);
-  const [mode, setMode] = useState<"sum" | "variation">("sum");
-  const [group, setGroup] = useState<"day" | "week" | "month" | "year">("day");
-
-  const groupData = (
-    data: Stargazer[],
-    grouping: "day" | "week" | "month" | "year"
-  ) => {
-    const counts: { [key: string]: number } = {};
-
-    data.forEach((item) => {
-      const date = parseISO(item.starred_at.toISOString());
-      let key: string;
-
-      switch (grouping) {
-        case "day":
-          key = format(date, 'yyyy-MM-dd');
-          break;
-        case "week":
-          key = format(startOfWeek(date), 'yyyy-MM-dd');
-          break;
-        case "month":
-          key = format(startOfMonth(date), 'yyyy-MM-dd');
-          break;
-        case "year":
-          key = format(startOfYear(date), 'yyyy-MM-dd');
-          break;
-        default:
-          key = format(date, 'yyyy-MM-dd');
-      }
-
-      counts[key] = (counts[key] || 0) + 1;
-    });
-
-    return Object.entries(counts)
-      .map(([date, count]) => ({
-        date,
-        count,
-      }))
-      .sort((a, b) => parseISO(a.date).getTime() - parseISO(b.date).getTime());
-  };
+  const [mode, setMode] = useState<ModeType>("sum");
+  const [group, setGroup] = useState<GroupingType>("day");
 
   const processedData = useMemo(() => {
-    const groupedData = groupData(rawData, group);
+    const groupedCounts: Record<string, number> = {};
 
-    return groupedData.map((item, index) => ({
-      date: parseISO(item.date).getTime(),
-      totalStargazers: groupedData
-        .slice(0, index + 1)
-        .reduce((sum, current) => sum + current.count, 0),
-      newStargazers: item.count,
-    }));
+    rawData.forEach((item) => {
+      const date = parseISO(item.starred_at.toISOString());
+      const key = getDateKey(date, group);
+      groupedCounts[key] = (groupedCounts[key] || 0) + 1;
+    });
+
+    return Object.entries(groupedCounts)
+      .sort((a, b) => parseISO(a[0]).getTime() - parseISO(b[0]).getTime())
+      .map(([date, count], index, array) => ({
+        date: parseISO(date).getTime(),
+        totalStargazers: array
+          .slice(0, index + 1)
+          .reduce((sum, [, curr]) => sum + curr, 0),
+        newStargazers: count,
+      }));
   }, [rawData, group]);
 
-  const formatXAxis = (timestamp: number) => {
-    const date = new Date(timestamp);
-    switch (group) {
-      case "day":
-        return format(date, 'dd/MM/yyyy');
-      case "week":
-        return `Semana de ${format(date, 'dd/MM/yyyy')}`;
-      case "month":
-        return format(date, 'MMM yyyy');
-      case "year":
-        return format(date, 'yyyy');
-      default:
-        return format(date, 'dd/MM/yyyy');
-    }
-  };
-
-  const getAxisYDomain = (refData: typeof processedData) => {
-    const metric = mode === "sum" ? "totalStargazers" : "newStargazers";
-    const [bottom, top] = [
-      Math.min(...refData.map((d) => d[metric])),
-      Math.max(...refData.map((d) => d[metric])),
-    ];
-    return [Math.floor(bottom - 1), Math.ceil(top + 1)];
-  };
-
-  const zoom = () => {
+  const handleZoom = () => {
     if (!refAreaLeft || !refAreaRight || refAreaLeft === refAreaRight) {
       setRefAreaLeft(null);
       setRefAreaRight(null);
       return;
     }
 
-    let [fromDate, toDate] = [Number(refAreaLeft), Number(refAreaRight)].sort(
+    const [fromDate, toDate] = [Number(refAreaLeft), Number(refAreaRight)].sort(
       (a, b) => a - b
     );
 
     const refData = processedData.filter(
-      (d) => d.date >= Number(fromDate) && d.date <= Number(toDate)
+      (d) => d.date >= fromDate && d.date <= toDate
     );
 
     if (refData.length > 0) {
-      const [bottom, top] = getAxisYDomain(refData);
-
+      const [bottom, top] = calculateAxisDomain(
+        refData,
+        mode === "sum" ? "totalStargazers" : "newStargazers"
+      );
       setRefAreaLeft(null);
       setRefAreaRight(null);
-      setLeft(Number(fromDate));
-      setRight(Number(toDate));
+      setLeft(fromDate);
+      setRight(toDate);
       setBottom(bottom);
       setTop(top);
     }
   };
 
-  const zoomOut = () => {
+  const handleZoomOut = () => {
     setRefAreaLeft(null);
     setRefAreaRight(null);
     setLeft(null);
@@ -145,58 +147,63 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     setTop(null);
   };
 
+  const metricKey = mode === "sum" ? "totalStargazers" : "newStargazers";
   const defaultXDomain = [
     Math.min(...processedData.map((d) => d.date)),
     Math.max(...processedData.map((d) => d.date)),
   ];
-  const defaultYDomain = getAxisYDomain(processedData);
-
-  const metric = mode === "sum" ? "totalStargazers" : "newStargazers";
-  const metricLabel = mode === "sum" ? "Total de Stargazers" : "Novos Stargazers";
+  const defaultYDomain = calculateAxisDomain(processedData, metricKey);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        gap: "16px",
+      }}
+    >
       <Container>
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer>
           <LineChart
             data={processedData}
-            onMouseDown={(e) =>
-              e && e.activeLabel && setRefAreaLeft(e.activeLabel)
-            }
+            onMouseDown={(e) => e?.activeLabel && setRefAreaLeft(e.activeLabel)}
             onMouseMove={(e) =>
-              refAreaLeft &&
-              e &&
-              e.activeLabel &&
-              setRefAreaRight(e.activeLabel)
+              refAreaLeft && e?.activeLabel && setRefAreaRight(e.activeLabel)
             }
-            onMouseUp={zoom}
+            onMouseUp={handleZoom}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="date"
-              allowDataOverflow={true}
+              allowDataOverflow
               domain={left && right ? [left, right] : defaultXDomain}
-              tickFormatter={formatXAxis}
+              tickFormatter={(timestamp) =>
+                GROUP_FORMAT_MAP[group](new Date(timestamp))
+              }
               type="number"
               tickCount={10}
               padding={{ left: 20, right: 20 }}
             />
             <YAxis
-              allowDataOverflow={true}
+              allowDataOverflow
               domain={bottom && top ? [bottom, top] : defaultYDomain}
               type="number"
               tickCount={6}
             />
             <Tooltip
-              labelFormatter={(label) => formatXAxis(label)}
-              formatter={(value) => [value, metricLabel]}
+              labelFormatter={(label) =>
+                GROUP_FORMAT_MAP[group](new Date(label))
+              }
+              formatter={(value) => [value, MODE_LABELS[mode]]}
             />
             <Line
               type="monotone"
-              animationDuration={500}
-              dataKey={metric}
+              dataKey={metricKey}
               stroke="#8884d8"
               strokeWidth={2}
+              animationDuration={500}
             />
             {refAreaLeft && refAreaRight && (
               <ReferenceArea
@@ -210,35 +217,42 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
           </LineChart>
         </ResponsiveContainer>
       </Container>
-      <div style={{ display: "flex", justifyContent: "space-around", marginTop: '12px' }}>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <label>Visualização:</label>
-          <select
-            id="mode-select"
+
+      <Stack direction="row" spacing={2} className="mt-3 justify-center">
+        <FormControl size="small" style={{ minWidth: "110px" }}>
+          <InputLabel>Visualização</InputLabel>
+          <Select
             value={mode}
-            onChange={(e) => setMode(e.target.value as "sum" | "variation")}
+            label="Visualização"
+            onChange={(e: any) => setMode(e.target.value as ModeType)}
           >
-            <option value="sum">Soma</option>
-            <option value="variation">Variação</option>
-          </select>
-        </div>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <label>Agrupar por:</label>
-          <select
-            id="group-select"
+            <MenuItem value="sum">Soma</MenuItem>
+            <MenuItem value="variation">Variação</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl size="small" style={{ minWidth: "110px" }}>
+          <InputLabel>Agrupar por</InputLabel>
+          <Select
             value={group}
-            onChange={(e) =>
-              setGroup(e.target.value as "day" | "week" | "month" | "year")
-            }
+            label="Agrupar por"
+            onChange={(e: any) => setGroup(e.target.value as GroupingType)}
           >
-            <option value="day">Dia</option>
-            <option value="week">Semana</option>
-            <option value="month">Mês</option>
-            <option value="year">Ano</option>
-          </select>
-        </div>
-        <button onClick={zoomOut}>Resetar Zoom</button>
-      </div>
+            <MenuItem value="day">Dia</MenuItem>
+            <MenuItem value="week">Semana</MenuItem>
+            <MenuItem value="month">Mês</MenuItem>
+            <MenuItem value="year">Ano</MenuItem>
+          </Select>
+        </FormControl>
+
+        <Button
+          variant="contained"
+          onClick={handleZoomOut}
+          className="min-w-[120px]"
+        >
+          Resetar Zoom
+        </Button>
+      </Stack>
     </div>
   );
 };

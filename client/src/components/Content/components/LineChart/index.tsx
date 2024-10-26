@@ -12,11 +12,11 @@ import {
 import {
   Select,
   MenuItem,
-  Button,
   FormControl,
   InputLabel,
   Stack,
 } from "@mui/material";
+import Button from "@material-ui/core/Button";
 import {
   parseISO,
   format,
@@ -245,11 +245,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
           </Select>
         </FormControl>
 
-        <Button
-          variant="contained"
-          onClick={handleZoomOut}
-          className="min-w-[120px]"
-        >
+        <Button variant="contained" color="primary" onClick={handleZoomOut}>
           Resetar Zoom
         </Button>
       </Stack>

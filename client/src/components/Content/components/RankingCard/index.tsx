@@ -7,6 +7,7 @@ interface User {
   name: string;
   handle: string;
   value: string;
+  date: Date;
 }
 
 interface RankingCardProps {

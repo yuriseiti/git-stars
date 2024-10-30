@@ -11,3 +11,9 @@ export const Container = styled.div`
   align-items: center;
   // border: 2px solid #000000;
 `;
+
+export const FlexDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+`;

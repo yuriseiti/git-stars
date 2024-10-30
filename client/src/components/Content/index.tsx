@@ -1,5 +1,5 @@
-import React from "react";
-import { Container } from "./styles";
+import React, { useState } from "react";
+import { Container, FlexDiv } from "./styles";
 import InfoCard from "./components/InfoCard";
 import RankingCard from "./components/RankingCard";
 import SearchBar from "./components/SearchBar";
@@ -13,11 +13,12 @@ import { format } from "date-fns";
 
 import LineChart from "./components/LineChart";
 import { useRepoContext } from "../../contexts/repoContext";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Button } from "@material-ui/core";
 
 const Content: React.FC = () => {
   const { accessToken, repoInfo, stargazersInfo, isLoading, step } =
     useRepoContext();
+  const [visibleCount, setVisibleCount] = useState(5);
 
   const sortedUsers = stargazersInfo
     ? stargazersInfo.sort((a: User, b: User) => {
@@ -35,19 +36,27 @@ const Content: React.FC = () => {
     followers_count: number;
   }
 
-  const firstStargazers = sortedUsers.slice(0, 5).map((user: User) => ({
-    avatar: user.avatar_url,
-    name: user.name,
-    handle: user.login,
-    value: format(new Date(user.starred_at), "dd/MM/yyyy"),
-  }));
+  const firstStargazers = sortedUsers
+    .slice(0, visibleCount)
+    .map((user: User) => ({
+      avatar: user.avatar_url,
+      name: user.name,
+      handle: user.login,
+      date: new Date(user.starred_at),
+    }));
 
-  const lastStargazers = sortedUsers.slice(-5).map((user: User) => ({
-    avatar: user.avatar_url,
-    name: user.name,
-    handle: user.login,
-    value: format(new Date(user.starred_at), "dd/MM/yyyy"),
-  }));
+  const lastStargazers = sortedUsers
+    .sort(
+      (a: User, b: User) =>
+        new Date(b.starred_at).getTime() - new Date(a.starred_at).getTime()
+    )
+    .slice(0, visibleCount)
+    .map((user: User) => ({
+      avatar: user.avatar_url,
+      name: user.name,
+      handle: user.login,
+      date: new Date(user.starred_at),
+    }));
 
   const formatNumber = (number: number) => {
     return new Intl.NumberFormat("pt-BR").format(number);
@@ -55,7 +64,7 @@ const Content: React.FC = () => {
 
   const mostFollowers = sortedUsers
     .sort((a: User, b: User) => b.followers_count - a.followers_count)
-    .slice(0, 5)
+    .slice(0, visibleCount)
     .map((user: User) => ({
       avatar: user.avatar_url,
       name: user.name,
@@ -75,21 +84,22 @@ const Content: React.FC = () => {
     handle: repoInfo?.owner?.login,
   };
 
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 5);
+  };
+
   return (
     <Container>
       {accessToken ? (
         <>
-          <div
+          <FlexDiv
             style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "16px",
               width: "60vw",
               padding: "0 22px",
             }}
           >
             <SearchBar />
-          </div>
+          </FlexDiv>
 
           {isLoading && (
             <>
@@ -105,13 +115,8 @@ const Content: React.FC = () => {
           )}
 
           {repoInfo && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "16px",
-              }}
-            >
+            <FlexDiv>
+              <OwnerCard user={repoOwner} />
               <InfoCard
                 icon={<StarBorderRoundedIcon />}
                 value={repoStars.toString()}
@@ -124,39 +129,35 @@ const Content: React.FC = () => {
               />
               <InfoCard
                 icon={<UpdateRoundedIcon />}
-                value={repoUpdatedAt}
+                date={new Date(repoInfo.updated_at)}
                 label="Atualizado em"
               />
-              <OwnerCard user={repoOwner} />
-            </div>
+            </FlexDiv>
           )}
 
           {stargazersInfo && (
             <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  width: "100%",
-                  gap: "16px",
-                }}
-              >
+              <FlexDiv style={{ width: "100%" }}>
                 <LineChart data={stargazersInfo} />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "16px",
-                }}
-              >
+              </FlexDiv>
+              <FlexDiv>
                 <RankingCard
                   title="Primeiras estrelas"
                   users={firstStargazers}
                 />
                 <RankingCard title="Últimas estrelas" users={lastStargazers} />
                 <RankingCard title="Mais seguidores" users={mostFollowers} />
-              </div>
+              </FlexDiv>
+              <FlexDiv>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleShowMore}
+                  disabled={visibleCount >= sortedUsers.length}
+                >
+                  Mostrar mais
+                </Button>
+              </FlexDiv>
             </>
           )}
         </>

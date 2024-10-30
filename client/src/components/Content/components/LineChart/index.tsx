@@ -191,6 +191,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
               domain={bottom && top ? [bottom, top] : defaultYDomain}
               type="number"
               tickCount={6}
+              tickFormatter={(value) => value.toLocaleString()}
             />
             <Tooltip
               labelFormatter={(label) =>
@@ -204,6 +205,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
               stroke="#8884d8"
               strokeWidth={2}
               animationDuration={500}
+              dot={false}
             />
             {refAreaLeft && refAreaRight && (
               <ReferenceArea

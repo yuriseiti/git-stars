@@ -103,7 +103,12 @@ const Header: React.FC = () => {
 
   return (
     <HeaderContainer>
-      <img src={GitStars} alt="GitStars" style={{ height: "24px" }} />
+      <img
+        src={GitStars}
+        alt="GitStars"
+        style={{ height: "24px", cursor: "pointer" }}
+        onClick={() => window.location.reload()}
+      />
       {!accessToken ? (
         <Button
           variant="contained"
@@ -115,10 +120,7 @@ const Header: React.FC = () => {
         </Button>
       ) : (
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Typography color="#f5f5f5">
-            Bem vindo, {userData?.name || userData?.login}!
-          </Typography>
-          <Box style={{ marginLeft: "12px" }}>
+          <Box style={{ marginRight: "12px" }}>
             <IconButton onClick={handleClick}>
               <Avatar
                 src={userData?.avatar_url}

@@ -1,13 +1,14 @@
 import React from "react";
-import Grid from "@mui/material/Grid"; 
-import { Paper, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { Paper, Tooltip, Typography } from "@mui/material";
 import { ListContainer } from "./styles";
 
 interface User {
   avatar: string;
   name: string;
   handle: string;
-  value: string;
+  value?: string;
+  date: Date;
 }
 
 interface UserListProps {
@@ -46,7 +47,26 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
                 @{user.handle}
               </Typography>
             </div>
-            <Typography variant="body1">{user.value}</Typography>
+            {user.value ? (
+              <Typography variant="body1">{user.value}</Typography>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Tooltip title={user.date.toLocaleString()} arrow placement="top">
+                  <Typography variant="body1">
+                    {user.date.toLocaleDateString()}
+                  </Typography>
+                </Tooltip>
+                <Typography variant="body2" color="textSecondary">
+                  {user.date.toLocaleTimeString()}
+                </Typography>
+              </div>
+            )}
           </Paper>
         </Grid>
       ))}

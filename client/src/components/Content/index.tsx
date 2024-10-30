@@ -74,9 +74,6 @@ const Content: React.FC = () => {
 
   const repoStars = repoInfo?.stargazers_count ?? 0;
   const repoFollowers = repoInfo?.watchers_count ?? 0;
-  const repoUpdatedAt = repoInfo?.updated_at
-    ? format(new Date(repoInfo.updated_at), "dd/MM/yyyy")
-    : "N/A";
 
   const repoOwner = {
     avatar: repoInfo?.owner?.avatar_url,

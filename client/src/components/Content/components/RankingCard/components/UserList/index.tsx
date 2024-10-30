@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Paper, Tooltip, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { ListContainer } from "./styles";
 
 interface User {
@@ -57,11 +57,9 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
                   alignItems: "center",
                 }}
               >
-                <Tooltip title={user.date.toLocaleString()} arrow placement="top">
-                  <Typography variant="body1">
-                    {user.date.toLocaleDateString()}
-                  </Typography>
-                </Tooltip>
+                <Typography variant="body1">
+                  {user.date.toLocaleDateString()}
+                </Typography>
                 <Typography variant="body2" color="textSecondary">
                   às {user.date.toLocaleTimeString()}
                 </Typography>

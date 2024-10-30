@@ -478,10 +478,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
 
-"@gittrends-app/core@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@gittrends-app/core/-/core-2.1.1.tgz#f13b87ff30418ea0ee5c41d4c8e059a8ad2e3b8f"
-  integrity sha512-1FjCex7SpEakPCfOvD6/vyVhwajVT8zHhoYdsN0tKtu6HmVBaoMaN7HiU+fOKL4U8Gc35odkm9dcsHw10to6ew==
+"@gittrends-app/core@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@gittrends-app/core/-/core-2.1.2.tgz#46566ed30de0df1d0db0857d4c3893bb35be7644"
+  integrity sha512-5M1SQVVLxtxMO3NMKjTe9R4ELKSyYW15HuUlJw74jU2EtqF6XiEzXVmpC5EE9cKEVNjLgaOi5Y51k6GTlE2DXg==
   dependencies:
     "@octokit/graphql" "^8.1.1"
     "@octokit/types" "^13.5.0"

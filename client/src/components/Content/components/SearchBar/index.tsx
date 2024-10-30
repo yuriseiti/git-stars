@@ -53,7 +53,6 @@ const SearchBar: React.FC = () => {
     resetState();
     const [owner, repo] = inputValue.split("/");
     const accessToken = localStorage.getItem("accessToken");
-    console.log("🚀 ~ handleSearch ~ accessToken:", accessToken)
     if (!accessToken) {
       setIsError("Access token is missing");
       setIsLoading(false);

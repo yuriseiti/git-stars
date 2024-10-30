@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   ReferenceArea,
   ResponsiveContainer,
+  Label,
 } from "recharts";
 import {
   Select,
@@ -54,6 +55,20 @@ const GROUP_FORMAT_MAP: Record<GroupingType, (date: Date) => string> = {
   year: (date) => format(date, "yyyy"),
 };
 
+const GROUP_FORMAT_TICK_MAP: Record<GroupingType, (date: Date) => string> = {
+  day: (date) => format(date, "dd/MM/yyyy"),
+  week: (date) => format(date, "dd/MM/yyyy"),
+  month: (date) => format(date, "MMM yyyy"),
+  year: (date) => format(date, "yyyy"),
+};
+
+const GROUP_FORMAT_LABEL_MAP: Record<GroupingType, string> = {
+  day: "Dia",
+  week: "Semana de",
+  month: "Mês",
+  year: "Ano",
+};
+
 const MODE_LABELS: Record<ModeType, string> = {
   sum: "Total de Stargazers",
   variation: "Novos Stargazers",
@@ -71,12 +86,15 @@ const getDateKey = (date: Date, grouping: GroupingType): string => {
 
 const calculateAxisDomain = (
   data: ChartData[],
-  metric: keyof ChartData
+  metric: keyof ChartData,
+  isZoomed: boolean
 ): [number, number] => {
   const values = data.map((d) => d[metric] as number);
   const min = Math.min(...values);
   const max = Math.max(...values);
-  return [Math.floor(min - 1), Math.ceil(max + 1)];
+  return isZoomed
+    ? [Math.floor(min - 1), Math.ceil(max + 1)]
+    : [0, Math.ceil(max + 1)];
 };
 
 const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
@@ -127,7 +145,8 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     if (refData.length > 0) {
       const [bottom, top] = calculateAxisDomain(
         refData,
-        mode === "sum" ? "totalStargazers" : "newStargazers"
+        mode === "sum" ? "totalStargazers" : "newStargazers",
+        true
       );
       setRefAreaLeft(null);
       setRefAreaRight(null);
@@ -152,7 +171,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
     Math.min(...processedData.map((d) => d.date)),
     Math.max(...processedData.map((d) => d.date)),
   ];
-  const defaultYDomain = calculateAxisDomain(processedData, metricKey);
+  const defaultYDomain = calculateAxisDomain(processedData, metricKey, false);
 
   return (
     <div
@@ -173,6 +192,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
               refAreaLeft && e?.activeLabel && setRefAreaRight(e.activeLabel)
             }
             onMouseUp={handleZoom}
+            margin={{ top: 10, right: 30, left: 30, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
@@ -180,19 +200,23 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
               allowDataOverflow
               domain={left && right ? [left, right] : defaultXDomain}
               tickFormatter={(timestamp) =>
-                GROUP_FORMAT_MAP[group](new Date(timestamp))
+                GROUP_FORMAT_TICK_MAP[group](new Date(timestamp))
               }
               type="number"
               tickCount={10}
               padding={{ left: 20, right: 20 }}
-            />
+            >
+              <Label value={GROUP_FORMAT_LABEL_MAP[group]} offset={-15} position="insideBottom" />
+            </XAxis>
             <YAxis
               allowDataOverflow
               domain={bottom && top ? [bottom, top] : defaultYDomain}
               type="number"
               tickCount={6}
               tickFormatter={(value) => value.toLocaleString()}
-            />
+            >
+              <Label value="Stargazers" angle={-90} offset={-10} position="insideLeft" />
+            </YAxis>
             <Tooltip
               labelFormatter={(label) =>
                 GROUP_FORMAT_MAP[group](new Date(label))

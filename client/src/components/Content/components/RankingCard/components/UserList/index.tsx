@@ -63,7 +63,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
                   </Typography>
                 </Tooltip>
                 <Typography variant="body2" color="textSecondary">
-                  {user.date.toLocaleTimeString()}
+                  às {user.date.toLocaleTimeString()}
                 </Typography>
               </div>
             )}

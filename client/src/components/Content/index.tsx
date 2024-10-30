@@ -114,12 +114,12 @@ const Content: React.FC = () => {
               <OwnerCard user={repoOwner} />
               <InfoCard
                 icon={<StarBorderRoundedIcon />}
-                value={repoStars.toString()}
+                value={repoStars.toLocaleString()}
                 label="Estrelas"
               />
               <InfoCard
                 icon={<PeopleOutlineRoundedIcon />}
-                value={repoFollowers.toString()}
+                value={repoFollowers.toLocaleString()}
                 label="Seguidores"
               />
               <InfoCard
@@ -151,6 +151,14 @@ const Content: React.FC = () => {
                   disabled={visibleCount >= sortedUsers.length}
                 >
                   Mostrar mais
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setVisibleCount(5)}
+                  disabled={visibleCount === 5}
+                >
+                  Mostrar menos
                 </Button>
               </FlexDiv>
             </>

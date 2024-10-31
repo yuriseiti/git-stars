@@ -10,9 +10,16 @@ import {
   Fragment,
   GithubService,
   GithubClient,
+  NodeStorage,
+  StorageFactory,
+  StorageService,
+  Repository,
+  Storage,
+  Stargazer,
 } from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
 import { Class } from "type-fest";
+// import PouchDB from "pouchdb";
 
 class CustomFactory extends BaseFragmentFactory {
   create<T extends Fragment>(Ref: Class<T>): T {
@@ -29,6 +36,44 @@ class CustomFactory extends BaseFragmentFactory {
       }) as unknown as T;
     }
     return super.create(Ref);
+  }
+}
+class LocalStorageFactory implements StorageFactory {
+  private repositoryStorage: NodeStorage<Repository>;
+  private storageMap: Map<string, Map<string, any>>;
+
+  constructor() {
+    this.storageMap = new Map();
+    this.repositoryStorage = this.create("Repository");
+  }
+
+  create(typename: "Repository"): NodeStorage<Repository>;
+  create(typename: "Stargazers"): Storage<Stargazer>;
+  create<T extends Node>(typename: string): NodeStorage<T>;
+  create<T = any>(typename: string): Storage<any> {
+    if (!this.storageMap.has(typename)) {
+      this.storageMap.set(typename, new Map());
+    }
+
+    const typeMap = this.storageMap.get(typename)!;
+    console.log(Array.from(typeMap.keys()));
+
+    return {
+      async get(query: Partial<any>): Promise<T | null> {
+        const key = query.id;
+        return typeMap.get(key) || null;
+      },
+      async find(query: Partial<any>): Promise<T[]> {
+        return [];
+      },
+      async save(data: any): Promise<void> {
+        const key = data.name_with_owner;
+        await typeMap.set(key, data);
+      },
+      async count(query: Partial<any>): Promise<number> {
+        return 42;
+      },
+    };
   }
 }
 
@@ -111,8 +156,13 @@ const SearchBar: React.FC = () => {
   };
 
   const createGithubService = (accessToken: string) => {
-    return new GithubService(
-      new GithubClient("https://api.github.com", { apiToken: accessToken })
+    const localStorageFactory = new LocalStorageFactory();
+    return new StorageService(
+      new GithubService(
+        new GithubClient("https://api.github.com", { apiToken: accessToken }),
+        { factory: new CustomFactory() }
+      ),
+      localStorageFactory
     );
   };
 

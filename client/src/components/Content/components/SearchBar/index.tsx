@@ -40,13 +40,13 @@ class CustomFactory extends BaseFragmentFactory {
 }
 
 class LocalStorageFactory implements StorageFactory {
-  private repositoryStorage: NodeStorage<Repository>;
+  // private repositoryStorage: NodeStorage<Repository>;
   private storageMap: Map<string, Map<string, any>>;
 
   constructor() {
     console.log("Storage Factory created");
     this.storageMap = new Map();
-    this.repositoryStorage = this.create("Repository");
+    // this.repositoryStorage = this.create("Repository");
   }
 
   create(typename: "Metadata"): NodeStorage<Metadata>;
@@ -76,19 +76,18 @@ class LocalStorageFactory implements StorageFactory {
         query: Partial<any>,
         opts?: { limit: number; offset?: number }
       ): Promise<T[]> {
-        const data = typeMap.get(query.id) || [];
+        const data =
+          typeMap.get(query.id) || typeMap.get(query.repository) || [];
 
-        if (opts?.offset) {
-          debugger;
+        if (opts?.offset && opts?.limit) {
           return data.slice(opts.offset, opts.offset + opts.limit);
         }
 
         if (Array.isArray(data)) {
-          return data.slice(0, opts?.limit);
+          return data;
         }
 
-        debugger;
-        return data;
+        return [data];
       },
 
       async save(data: any): Promise<void> {
@@ -103,20 +102,15 @@ class LocalStorageFactory implements StorageFactory {
             typeMap.set(data.name_with_owner, data);
             break;
           case "Stargazer":
-            if (typeMap.has(`${data[0].repository}_${typename}`)) {
-              const currentData = typeMap.get(
-                `${data[0].repository}_${typename}`
-              );
-              typeMap.set(`${data[0].repository}_${typename}`, [
-                ...currentData,
-                ...data,
-              ]);
+            if (typeMap.has(`${data[0].repository}`)) {
+              const currentData = typeMap.get(`${data[0].repository}`);
+              typeMap.set(`${data[0].repository}`, [...currentData, ...data]);
             } else {
-              typeMap.set(`${data[0].repository}_${typename}`, data);
+              typeMap.set(`${data[0].repository}`, data);
             }
             break;
           case "Metadata":
-            typeMap.set(data.id, data);
+            typeMap.set(data.id, [data]);
             break;
           default:
             break;
@@ -124,6 +118,7 @@ class LocalStorageFactory implements StorageFactory {
       },
 
       async count(query: Partial<any>): Promise<number> {
+        console.log("🚀 ~ LocalStorageFactory ~ count ~ query:", query);
         return typeMap.size;
       },
     };
@@ -256,6 +251,7 @@ const SearchBar: React.FC = () => {
       login: string;
       followers_count: number | undefined;
     }> = [];
+
     for await (const res of service.stargazers({
       repository: repoId,
     })) {

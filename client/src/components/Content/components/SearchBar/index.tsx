@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
@@ -16,10 +16,10 @@ import {
   Repository,
   Storage,
   Stargazer,
+  Metadata,
 } from "@gittrends-app/core";
 import { useRepoContext } from "../../../../contexts/repoContext";
 import { Class } from "type-fest";
-// import PouchDB from "pouchdb";
 
 class CustomFactory extends BaseFragmentFactory {
   create<T extends Fragment>(Ref: Class<T>): T {
@@ -38,47 +38,101 @@ class CustomFactory extends BaseFragmentFactory {
     return super.create(Ref);
   }
 }
+
 class LocalStorageFactory implements StorageFactory {
   private repositoryStorage: NodeStorage<Repository>;
   private storageMap: Map<string, Map<string, any>>;
 
   constructor() {
+    console.log("Storage Factory created");
     this.storageMap = new Map();
     this.repositoryStorage = this.create("Repository");
   }
 
+  create(typename: "Metadata"): NodeStorage<Metadata>;
   create(typename: "Repository"): NodeStorage<Repository>;
-  create(typename: "Stargazers"): Storage<Stargazer>;
-  create<T extends Node>(typename: string): NodeStorage<T>;
+  create(typename: "Stargazer"): Storage<Stargazer>;
+  create<T extends { id: string; __typename: string }>(
+    typename: string
+  ): NodeStorage<T>;
   create<T = any>(typename: string): Storage<any> {
     if (!this.storageMap.has(typename)) {
       this.storageMap.set(typename, new Map());
     }
 
     const typeMap = this.storageMap.get(typename)!;
-    console.log(Array.from(typeMap.keys()));
+    console.log("🚀 ~ LocalStorageFactory ~ storageMap:", this.storageMap);
 
     return {
       async get(query: Partial<any>): Promise<T | null> {
-        const key = query.id;
-        return typeMap.get(key) || null;
+        console.log("🚀 ~ LocalStorageFactory ~ get ~ query:", query);
+
+        const result = typeMap.get(query.id);
+
+        return result || null;
       },
-      async find(query: Partial<any>): Promise<T[]> {
-        return [];
+
+      async find(
+        query: Partial<any>,
+        opts?: { limit: number; offset?: number }
+      ): Promise<T[]> {
+        const data = typeMap.get(query.id) || [];
+
+        if (opts?.offset) {
+          debugger;
+          return data.slice(opts.offset, opts.offset + opts.limit);
+        }
+
+        if (Array.isArray(data)) {
+          return data.slice(0, opts?.limit);
+        }
+
+        debugger;
+        return data;
       },
+
       async save(data: any): Promise<void> {
-        const key = data.name_with_owner;
-        await typeMap.set(key, data);
+        // console.log("Save Data:", {
+        //   dataObject: data,
+        //   existingKeys: Array.from(typeMap.keys()),
+        //   typeMap: typeMap,
+        //   typename,
+        // });
+        switch (typename) {
+          case "Repository":
+            typeMap.set(data.name_with_owner, data);
+            break;
+          case "Stargazer":
+            if (typeMap.has(`${data[0].repository}_${typename}`)) {
+              const currentData = typeMap.get(
+                `${data[0].repository}_${typename}`
+              );
+              typeMap.set(`${data[0].repository}_${typename}`, [
+                ...currentData,
+                ...data,
+              ]);
+            } else {
+              typeMap.set(`${data[0].repository}_${typename}`, data);
+            }
+            break;
+          case "Metadata":
+            typeMap.set(data.id, data);
+            break;
+          default:
+            break;
+        }
       },
+
       async count(query: Partial<any>): Promise<number> {
-        return 42;
+        return typeMap.size;
       },
     };
   }
 }
 
 const SearchBar: React.FC = () => {
-  const { setRepoInfo, setStargazersInfo, setIsLoading, setStep } =
+  console.log("SearchBar rendered");
+  const { setRepoInfo, setStargazersInfo, setIsLoading, setStep, accessToken } =
     useRepoContext();
 
   const [inputValue, setInputValue] = useState("jellyfin/jellyfin-kodi");
@@ -87,6 +141,28 @@ const SearchBar: React.FC = () => {
 
   const isPausedRef = useRef(false);
   const inputChangedRef = useRef(true);
+
+  const localStorageFactoryRef = useRef<LocalStorageFactory | null>(null);
+
+  if (!localStorageFactoryRef.current) {
+    localStorageFactoryRef.current = new LocalStorageFactory();
+  }
+
+  const [storageServiceInstance, setStorageServiceInstance] =
+    useState<StorageService | null>(null);
+
+  useEffect(() => {
+    if (accessToken) {
+      const instance = new StorageService(
+        new GithubService(
+          new GithubClient("https://api.github.com", { apiToken: accessToken }),
+          { factory: new CustomFactory() }
+        ),
+        localStorageFactoryRef.current!
+      );
+      setStorageServiceInstance(instance);
+    }
+  }, [accessToken]);
 
   const handleSearch = async () => {
     if (!validateInput(inputValue)) return;
@@ -103,12 +179,17 @@ const SearchBar: React.FC = () => {
       setIsLoading(false);
       return;
     }
-    const service = createGithubService(accessToken);
+    const service = storageServiceInstance;
 
     try {
+      if (!service) {
+        setIsError("Storage service is not initialized");
+        setIsLoading(false);
+        return;
+      }
       const repoInfo = await fetchRepoInfo(service, owner, repo);
       setRepoInfo(repoInfo);
-      if (repoInfo) {
+      if (repoInfo && service) {
         await fetchStargazers(service, repoInfo.id);
       } else {
         setIsLoading(false);
@@ -155,26 +236,15 @@ const SearchBar: React.FC = () => {
     setIsLoading("repo");
   };
 
-  const createGithubService = (accessToken: string) => {
-    const localStorageFactory = new LocalStorageFactory();
-    return new StorageService(
-      new GithubService(
-        new GithubClient("https://api.github.com", { apiToken: accessToken }),
-        { factory: new CustomFactory() }
-      ),
-      localStorageFactory
-    );
-  };
-
   const fetchRepoInfo = async (
-    service: GithubService,
+    service: StorageService,
     owner: string,
     repo: string
   ) => {
     return await service.repository(owner, repo);
   };
 
-  const fetchStargazers = async (service: GithubService, repoId: string) => {
+  const fetchStargazers = async (service: StorageService, repoId: string) => {
     setIsLoading("stargazers");
     setIsFetching(true);
     isPausedRef.current = false;
@@ -186,10 +256,8 @@ const SearchBar: React.FC = () => {
       login: string;
       followers_count: number | undefined;
     }> = [];
-
     for await (const res of service.stargazers({
       repository: repoId,
-      factory: new CustomFactory(),
     })) {
       setStep((prev) => prev + 1);
       stargazersInfo = [...stargazersInfo, ...processStargazers(res.data)];

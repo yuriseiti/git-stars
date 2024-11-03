@@ -87,7 +87,6 @@ class LocalStorageFactory implements StorageFactory {
         switch (typename) {
           case "Stargazer":
             try {
-              debugger;
               const stargazersData = await stargazerDB.find({
                 selector: { _id: query.repository },
               });
@@ -205,7 +204,6 @@ class LocalStorageFactory implements StorageFactory {
           case "Stargazer":
             console.log("Saving Stargazer:", data);
             if (Array.isArray(data) && data.length > 0) {
-              // debugger;
               await saveStargazersArrayWithConflictHandling(
                 stargazerDB,
                 data[0].repository,

@@ -227,6 +227,7 @@ class LocalStorageFactory implements StorageFactory {
 
       async count(query: Partial<any>): Promise<number> {
         try {
+          console.log(query)
           const result = await repositoryDB.allDocs();
           return result.total_rows;
         } catch (error) {

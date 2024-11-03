@@ -82,7 +82,7 @@ class LocalStorageFactory implements StorageFactory {
 
       async find(
         query: Partial<any>,
-        opts?: { limit: number; offset?: number }
+        // opts?: { limit: number; offset?: number }
       ): Promise<T[]> {
         switch (typename) {
           case "Stargazer":
@@ -91,7 +91,8 @@ class LocalStorageFactory implements StorageFactory {
               const stargazersData = await stargazerDB.find({
                 selector: { _id: query.repository },
               });
-              return stargazersData.docs[0].data as unknown as T[];
+              const stargazersDoc = stargazersData.docs[0] as PouchDB.Core.ExistingDocument<{ data: T[] }>;
+              return stargazersDoc.data;
             } catch (error) {
               return [];
             }
@@ -164,7 +165,7 @@ class LocalStorageFactory implements StorageFactory {
               existingDoc = await db.get(id);
               // Update existing document
               await db.put({
-                data: [...existingDoc.data, ...saveData],
+                data: [...(existingDoc as any).data, ...saveData],
                 _id: id,
                 _rev: existingDoc._rev,
               });
@@ -179,7 +180,7 @@ class LocalStorageFactory implements StorageFactory {
                 // Handle conflict by getting latest version and retrying
                 const latest = await db.get(id);
                 await db.put({
-                  data: [...latest.data, ...saveData],
+                  data: [...(latest as any).data, ...saveData],
                   _id: id,
                   _rev: latest._rev,
                 });

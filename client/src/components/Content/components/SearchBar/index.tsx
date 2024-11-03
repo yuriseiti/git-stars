@@ -81,7 +81,7 @@ class LocalStorageFactory implements StorageFactory {
       },
 
       async find(
-        query: Partial<any>,
+        query: Partial<any>
         // opts?: { limit: number; offset?: number }
       ): Promise<T[]> {
         switch (typename) {
@@ -90,7 +90,8 @@ class LocalStorageFactory implements StorageFactory {
               const stargazersData = await stargazerDB.find({
                 selector: { _id: query.repository },
               });
-              const stargazersDoc = stargazersData.docs[0] as PouchDB.Core.ExistingDocument<{ data: T[] }>;
+              const stargazersDoc = stargazersData
+                .docs[0] as PouchDB.Core.ExistingDocument<{ data: T[] }>;
               return stargazersDoc.data;
             } catch (error) {
               return [];
@@ -195,14 +196,16 @@ class LocalStorageFactory implements StorageFactory {
 
         switch (typename) {
           case "Repository":
-            console.log("Saving Repository:", data);
             const repoData = { ...data };
             delete repoData.__typename;
-            await saveWithConflictHandling(repositoryDB, data.id, repoData);
+            await saveWithConflictHandling(
+              repositoryDB,
+              data.name_with_owner,
+              repoData
+            );
             break;
 
           case "Stargazer":
-            console.log("Saving Stargazer:", data);
             if (Array.isArray(data) && data.length > 0) {
               await saveStargazersArrayWithConflictHandling(
                 stargazerDB,
@@ -213,7 +216,6 @@ class LocalStorageFactory implements StorageFactory {
             break;
 
           case "Metadata":
-            console.log("Saving Metadata:", data);
             await saveWithConflictHandling(metadataDB, data.id, data);
             break;
 
@@ -225,7 +227,7 @@ class LocalStorageFactory implements StorageFactory {
 
       async count(query: Partial<any>): Promise<number> {
         try {
-          console.log(query)
+          console.log(query);
           const result = await repositoryDB.allDocs();
           return result.total_rows;
         } catch (error) {

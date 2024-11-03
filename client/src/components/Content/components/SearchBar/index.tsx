@@ -21,6 +21,11 @@ import {
 import { useRepoContext } from "../../../../contexts/repoContext";
 import { Class } from "type-fest";
 
+import PouchDB from "pouchdb";
+import PouchDBFind from "pouchdb-find";
+
+PouchDB.plugin(PouchDBFind);
+
 class CustomFactory extends BaseFragmentFactory {
   create<T extends Fragment>(Ref: Class<T>): T {
     if (Ref.name == ActorFragment.name) {
@@ -40,13 +45,18 @@ class CustomFactory extends BaseFragmentFactory {
 }
 
 class LocalStorageFactory implements StorageFactory {
-  // private repositoryStorage: NodeStorage<Repository>;
-  private storageMap: Map<string, Map<string, any>>;
+  private repositoryDB: PouchDB.Database;
+  private stargazerDB: PouchDB.Database;
+  private metadataDB: PouchDB.Database;
 
-  constructor() {
-    console.log("Storage Factory created");
-    this.storageMap = new Map();
-    // this.repositoryStorage = this.create("Repository");
+  constructor(
+    repositoryDB: PouchDB.Database,
+    stargazerDB: PouchDB.Database,
+    metadataDB: PouchDB.Database
+  ) {
+    this.repositoryDB = repositoryDB;
+    this.stargazerDB = stargazerDB;
+    this.metadataDB = metadataDB;
   }
 
   create(typename: "Metadata"): NodeStorage<Metadata>;
@@ -56,77 +66,178 @@ class LocalStorageFactory implements StorageFactory {
     typename: string
   ): NodeStorage<T>;
   create<T = any>(typename: string): Storage<any> {
-    if (!this.storageMap.has(typename)) {
-      this.storageMap.set(typename, new Map());
-    }
-
-    const typeMap = this.storageMap.get(typename)!;
-    console.log("🚀 ~ LocalStorageFactory ~ storageMap:", this.storageMap);
+    const repositoryDB = this.repositoryDB;
+    const stargazerDB = this.stargazerDB;
+    const metadataDB = this.metadataDB;
 
     return {
       async get(query: Partial<any>): Promise<T | null> {
-        console.log("🚀 ~ LocalStorageFactory ~ get ~ query:", query);
-
-        const result = typeMap.get(query.id);
-
-        return result || null;
+        try {
+          const data = await repositoryDB.get(query.id);
+          return data as T;
+        } catch (error) {
+          return null;
+        }
       },
 
       async find(
         query: Partial<any>,
         opts?: { limit: number; offset?: number }
       ): Promise<T[]> {
-        const data =
-          typeMap.get(query.id) || typeMap.get(query.repository) || [];
-
-        if (opts?.offset && opts?.limit) {
-          return data.slice(opts.offset, opts.offset + opts.limit);
+        switch (typename) {
+          case "Stargazer":
+            try {
+              debugger;
+              const stargazersData = await stargazerDB.find({
+                selector: { _id: query.repository },
+              });
+              return stargazersData.docs[0].data as unknown as T[];
+            } catch (error) {
+              return [];
+            }
+          case "Metadata":
+            try {
+              const metadata = await metadataDB.find({
+                selector: { _id: query.id },
+              });
+              return metadata.docs as unknown as T[];
+            } catch (error) {
+              return [];
+            }
+          default:
+            return [];
         }
-
-        if (Array.isArray(data)) {
-          return data;
-        }
-
-        return [data];
       },
 
       async save(data: any): Promise<void> {
-        // console.log("Save Data:", {
-        //   dataObject: data,
-        //   existingKeys: Array.from(typeMap.keys()),
-        //   typeMap: typeMap,
-        //   typename,
-        // });
+        const saveWithConflictHandling = async (
+          db: PouchDB.Database,
+          id: string,
+          saveData: any
+        ) => {
+          try {
+            delete saveData.__typename;
+            // Try to get existing document
+            let existingDoc;
+            try {
+              existingDoc = await db.get(id);
+              // Update existing document
+              await db.put({
+                ...saveData,
+                _id: id,
+                _rev: existingDoc._rev,
+              });
+            } catch (error: any) {
+              if (error.name === "not_found") {
+                // Document doesn't exist yet, create new one
+                await db.put({
+                  _id: id,
+                  ...saveData,
+                });
+              } else if (error.name === "conflict") {
+                // Handle conflict by getting latest version and retrying
+                const latest = await db.get(id);
+                await db.put({
+                  ...saveData,
+                  _id: id,
+                  _rev: latest._rev,
+                });
+              } else {
+                throw error;
+              }
+            }
+          } catch (error) {
+            console.error(`Error saving ${typename}:`, error);
+            throw error;
+          }
+        };
+
+        const saveStargazersArrayWithConflictHandling = async (
+          db: PouchDB.Database,
+          id: string,
+          saveData: any[]
+        ) => {
+          try {
+            // Try to get existing document
+            let existingDoc;
+            try {
+              existingDoc = await db.get(id);
+              // Update existing document
+              await db.put({
+                data: [...existingDoc.data, ...saveData],
+                _id: id,
+                _rev: existingDoc._rev,
+              });
+            } catch (error: any) {
+              if (error.name === "not_found") {
+                // Document doesn't exist yet, create new one
+                await db.put({
+                  _id: id,
+                  data: [...saveData],
+                });
+              } else if (error.name === "conflict") {
+                // Handle conflict by getting latest version and retrying
+                const latest = await db.get(id);
+                await db.put({
+                  data: [...latest.data, ...saveData],
+                  _id: id,
+                  _rev: latest._rev,
+                });
+              } else {
+                throw error;
+              }
+            }
+          } catch (error) {
+            console.error(`Error saving ${typename}:`, error);
+            throw error;
+          }
+        };
+
         switch (typename) {
           case "Repository":
-            typeMap.set(data.name_with_owner, data);
+            console.log("Saving Repository:", data);
+            const repoData = { ...data };
+            delete repoData.__typename;
+            await saveWithConflictHandling(repositoryDB, data.id, repoData);
             break;
+
           case "Stargazer":
-            if (typeMap.has(`${data[0].repository}`)) {
-              const currentData = typeMap.get(`${data[0].repository}`);
-              typeMap.set(`${data[0].repository}`, [...currentData, ...data]);
-            } else {
-              typeMap.set(`${data[0].repository}`, data);
+            console.log("Saving Stargazer:", data);
+            if (Array.isArray(data) && data.length > 0) {
+              // debugger;
+              await saveStargazersArrayWithConflictHandling(
+                stargazerDB,
+                data[0].repository,
+                data
+              );
             }
             break;
+
           case "Metadata":
-            typeMap.set(data.id, [data]);
+            console.log("Saving Metadata:", data);
+            await saveWithConflictHandling(metadataDB, data.id, data);
             break;
+
           default:
+            console.warn(`Unhandled typename: ${typename}`);
             break;
         }
       },
 
       async count(query: Partial<any>): Promise<number> {
-        console.log("🚀 ~ LocalStorageFactory ~ count ~ query:", query);
-        return typeMap.size;
+        try {
+          const result = await repositoryDB.allDocs();
+          return result.total_rows;
+        } catch (error) {
+          console.error("Error counting documents:", error);
+          return 0;
+        }
       },
     };
   }
 }
 
 const SearchBar: React.FC = () => {
-  console.log("SearchBar rendered");
   const { setRepoInfo, setStargazersInfo, setIsLoading, setStep, accessToken } =
     useRepoContext();
 
@@ -139,8 +250,16 @@ const SearchBar: React.FC = () => {
 
   const localStorageFactoryRef = useRef<LocalStorageFactory | null>(null);
 
+  const repositoryDB = new PouchDB("repository");
+  const stargazerDB = new PouchDB("stargazer");
+  const metadataDB = new PouchDB("metadata");
+
   if (!localStorageFactoryRef.current) {
-    localStorageFactoryRef.current = new LocalStorageFactory();
+    localStorageFactoryRef.current = new LocalStorageFactory(
+      repositoryDB,
+      stargazerDB,
+      metadataDB
+    );
   }
 
   const [storageServiceInstance, setStorageServiceInstance] =

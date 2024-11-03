@@ -110,8 +110,10 @@ const LineChartComponent: React.FC<LineChartProps> = ({ data: rawData }) => {
   const processedData = useMemo(() => {
     const groupedCounts: Record<string, number> = {};
 
+    console.log("🚀 ~ rawData.forEach ~ rawData:", rawData)
+    // debugger;
     rawData.forEach((item) => {
-      const date = parseISO(item.starred_at.toISOString());
+      const date = parseISO(typeof item.starred_at === 'string' ? item.starred_at : item.starred_at.toISOString());
       const key = getDateKey(date, group);
       groupedCounts[key] = (groupedCounts[key] || 0) + 1;
     });

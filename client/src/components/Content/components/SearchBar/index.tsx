@@ -81,24 +81,24 @@ class LocalStorageFactory implements StorageFactory {
       },
 
       async find(
-        query: Partial<any>
-        // opts?: { limit: number; offset?: number }
+        query: Partial<any>,
+        opts?: { limit: number; offset?: number }
       ): Promise<T[]> {
         switch (typename) {
           case "Stargazer":
             try {
               const stargazersData = await stargazerDB.find({
-                selector: { _id: query.repository },
+                selector: { repository: query.repository },
+                limit: opts?.limit || 100,
+                skip: opts?.offset || 0,
               });
-              const stargazersDoc = stargazersData
-                .docs[0] as PouchDB.Core.ExistingDocument<{ data: T[] }>;
-              return stargazersDoc.data;
+
+              return stargazersData.docs as unknown as T[];
             } catch (error) {
               return [];
             }
           case "Metadata":
             try {
-              // debugger;
               const metadata = await metadataDB.find({
                 selector: { _id: query.id },
               });
@@ -148,6 +148,7 @@ class LocalStorageFactory implements StorageFactory {
                 throw error;
               }
             }
+            await db.compact();
           } catch (error) {
             console.error(`Error saving ${typename}:`, error);
             throw error;
@@ -156,41 +157,54 @@ class LocalStorageFactory implements StorageFactory {
 
         const saveStargazersArrayWithConflictHandling = async (
           db: PouchDB.Database,
-          id: string,
+          idPrefix: string,
           saveData: any[]
         ) => {
           try {
-            // Try to get existing document
-            let existingDoc;
-            try {
-              existingDoc = await db.get(id);
-              // Update existing document
-              await db.put({
-                data: [...(existingDoc as any).data, ...saveData],
-                _id: id,
-                _rev: existingDoc._rev,
-              });
-            } catch (error: any) {
-              if (error.name === "not_found") {
-                // Document doesn't exist yet, create new one
-                await db.put({
-                  _id: id,
-                  data: [...saveData],
-                });
-              } else if (error.name === "conflict") {
-                // Handle conflict by getting latest version and retrying
-                const latest = await db.get(id);
-                await db.put({
-                  data: [...(latest as any).data, ...saveData],
-                  _id: id,
-                  _rev: latest._rev,
-                });
-              } else {
+            for (let i = 0; i < saveData.length; i++) {
+              const item = saveData[i];
+              delete item.__typename;
+              const id = `${idPrefix}_${saveData[i].user.id}`;
+              try {
+                // Try to get existing document
+                let existingDoc;
+                try {
+                  existingDoc = await db.get(id);
+                  // Update existing document
+                  await db.put({
+                    ...existingDoc,
+                    ...item,
+                    _id: id,
+                    _rev: existingDoc._rev,
+                  });
+                } catch (error: any) {
+                  if (error.name === "not_found") {
+                    // Document doesn't exist yet, create new one
+                    await db.put({
+                      _id: id,
+                      ...item,
+                    });
+                  } else if (error.name === "conflict") {
+                    // Handle conflict by getting latest version and retrying
+                    const latest = await db.get(id);
+                    await db.put({
+                      ...latest,
+                      ...item,
+                      _id: id,
+                      _rev: latest._rev,
+                    });
+                  } else {
+                    throw error;
+                  }
+                }
+                await db.compact();
+              } catch (error) {
+                console.error(`Error saving document with id ${id}:`, error);
                 throw error;
               }
             }
           } catch (error) {
-            console.error(`Error saving ${typename}:`, error);
+            console.error(`Error saving stargazers array:`, error);
             throw error;
           }
         };
@@ -228,7 +242,7 @@ class LocalStorageFactory implements StorageFactory {
 
       async count(query: Partial<any>): Promise<number> {
         try {
-          // console.log(query);
+          console.log(query);
           const result = await repositoryDB.allDocs();
           return result.total_rows;
         } catch (error) {
@@ -256,6 +270,10 @@ const SearchBar: React.FC = () => {
   const repositoryDB = new PouchDB("repository");
   const stargazerDB = new PouchDB("stargazer");
   const metadataDB = new PouchDB("metadata");
+
+  stargazerDB.createIndex({
+    index: { fields: ["repository"] },
+  });
 
   if (!localStorageFactoryRef.current) {
     localStorageFactoryRef.current = new LocalStorageFactory(
@@ -387,12 +405,8 @@ const SearchBar: React.FC = () => {
         setIsLoading(false);
         break;
       }
-
-      if (!res.metadata.has_more) {
-        finalizeFetching();
-        break;
-      }
     }
+    finalizeFetching();
   };
 
   const processStargazers = (

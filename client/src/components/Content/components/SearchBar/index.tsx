@@ -98,6 +98,7 @@ class LocalStorageFactory implements StorageFactory {
             }
           case "Metadata":
             try {
+              // debugger;
               const metadata = await metadataDB.find({
                 selector: { _id: query.id },
               });

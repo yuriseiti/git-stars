@@ -74,6 +74,18 @@ class LocalStorageFactory implements StorageFactory {
       async get(query: Partial<any>): Promise<T | null> {
         try {
           const data = await repositoryDB.get(query.id);
+
+          if ('timestamp' in data && new Date().getTime() - new Date(data.timestamp as string).getTime() > 1000 * 60 * 60 * 24 * 7) {
+            await repositoryDB.remove(data);
+            await metadataDB.get(`${(data as any).id}_Stargazer`).then(async (doc) => {
+              await metadataDB.remove(doc);
+            });            
+            const stargazersData = await stargazerDB.allDocs();
+            for (let i = 0; i < stargazersData.total_rows; i++) {
+              await stargazerDB.remove(stargazersData.rows[i].id, stargazersData.rows[i].value.rev);
+            }
+          }
+
           return data as T;
         } catch (error) {
           return null;
@@ -119,6 +131,7 @@ class LocalStorageFactory implements StorageFactory {
         ) => {
           try {
             delete saveData.__typename;
+            saveData.timestamp = new Date();
             // Try to get existing document
             let existingDoc;
             try {
@@ -148,7 +161,6 @@ class LocalStorageFactory implements StorageFactory {
                 throw error;
               }
             }
-            await db.compact();
           } catch (error) {
             console.error(`Error saving ${typename}:`, error);
             throw error;
@@ -197,7 +209,6 @@ class LocalStorageFactory implements StorageFactory {
                     throw error;
                   }
                 }
-                await db.compact();
               } catch (error) {
                 console.error(`Error saving document with id ${id}:`, error);
                 throw error;
@@ -267,9 +278,9 @@ const SearchBar: React.FC = () => {
 
   const localStorageFactoryRef = useRef<LocalStorageFactory | null>(null);
 
-  const repositoryDB = new PouchDB("repository");
-  const stargazerDB = new PouchDB("stargazer");
-  const metadataDB = new PouchDB("metadata");
+  const repositoryDB = new PouchDB("repository",  {auto_compaction: true});
+  const stargazerDB = new PouchDB("stargazer",  {auto_compaction: true});
+  const metadataDB = new PouchDB("metadata",  {auto_compaction: true});
 
   stargazerDB.createIndex({
     index: { fields: ["repository"] },

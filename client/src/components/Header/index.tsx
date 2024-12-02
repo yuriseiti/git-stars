@@ -27,7 +27,7 @@ const clientId =
 const redirectUri =
   env === "DEV"
     ? "http://localhost:5173/"
-    : "https://git-stars-3cyc.vercel.app/";
+    : "https://git-stars-project.vercel.app/";
 
 const Header: React.FC = () => {
   const { accessToken, setAccessToken } = useRepoContext();
